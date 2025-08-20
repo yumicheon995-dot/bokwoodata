@@ -4,236 +4,156 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet" />
-  <title>카드 매출 유동화 | 무료 상담 신청</title>
-  <meta name="description" content="사업자 대출 막혀도 가능합니다. 카드 매출 채권 유동화로 운영자금 즉시 확보!" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>카드 매출 기반 유동화</title>
   <style>
-    :root{--brand-red:#d50000;--brand-blue:#1034a6;--ink:#0c1a2a;--muted:#5a5f6a;--hero:#e9f5ff;--section:#f7f7fb;--ok:#0b875b;--purple:#5e2ced;--btn-yellow:#ffcc00;--btn-dark:#0e2237}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:'Pretendard','Noto Sans KR',sans-serif;background:#f6f9fc;color:#111;line-height:1.6}
-    a{color:inherit}
-    .container{max-width:1120px;margin:0 auto;padding:0 20px}
-    header.hero{background:var(--hero);padding:60px 20px;text-align:center}
-    .hero .wrap{max-width:980px;margin:0 auto}
-    .eyebrow{color:#41566e;font-weight:700}
-    header.hero h1{font-family:'Black Han Sans','Noto Sans KR',sans-serif;font-size:56px;line-height:1.08;color:#103464;margin:14px 0}
-    header.hero h1 .accent{color:var(--brand-red)}
-    header.hero h1 strong{font-weight:900;letter-spacing:-1px}
-    .checklist{margin-top:22px;display:grid;gap:10px;justify-content:center}
-    .checklist li{font-size:18px;text-align:left}
-    .checklist li::before{content:"✔ ";color:#103464;font-weight:900;margin-right:4px}
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;justify-content:center}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 20px;border-radius:12px;font-weight:800;border:2px solid transparent;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.08);transition:.25s}
-    .btn:hover{transform:translateY(-2px)}
-    .btn.call{background:var(--btn-yellow);color:#000}
-    .btn.outline{background:var(--btn-dark);color:#fff;border-color:var(--btn-dark)}
-    .btn.primary{background:var(--purple);color:#fff}
-    .btn.primary:after{content:" →";font-weight:900}
-    section{padding:56px 0}
-    section.alt{background:var(--section)}
-    h2{font-size:28px;margin:0 0 12px;color:var(--brand-blue);text-align:center}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{background:#fff;border:1px solid #ececf3;border-radius:16px;padding:22px;box-shadow:0 4px 12px rgba(0,0,0,.05);transition:.25s;position:relative}
-    .card:hover{transform:translateY(-4px);box-shadow:0 6px 18px rgba(0,0,0,.1)}
-    .card b{display:block;margin-bottom:6px;font-size:17px}
-    .muted{color:var(--muted)}
-    /* FAQ 아이콘 행 스타일 */
-    .faq .row{display:flex;align-items:center;gap:10px;margin-bottom:6px}
-    .faq .ico{width:22px;height:22px;display:inline-block}
+    body {margin:0; font-family:'Noto Sans KR', sans-serif; line-height:1.6; background:#f8f9fb; color:#222;}
+    header {background:#e6f0fa; color:#002855; text-align:center; padding:60px 20px;}
+    header h1 {font-size:clamp(32px,6vw,56px); font-weight:900; line-height:1.3;}
+    header h1 span.red {color:#d50000;}
+    header h1 span.blue {color:#002855;}
+    header p {font-size:1.1em; margin-bottom:30px;}
+    .cta-btn {background:#ffcc00; color:#000; font-weight:bold; padding:15px 25px; border-radius:6px; display:inline-block; margin:10px; font-size:1.1em; text-decoration:none;}
+    .cta-btn.blue {background:#002855; color:#fff;}
 
-    .muted{color:var(--muted)}
-    .step{display:flex;gap:12px;align-items:flex-start}
-    .step .num{background:var(--brand-blue);color:#fff;font-weight:800;border-radius:9999px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;text-align:center}
-    section.form-area{background:#fff;max-width:860px;margin:40px auto;padding:40px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.08)}
-    section.form-area h2{text-align:center;font-size:22px;margin-bottom:24px}
-    form{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-    form .full{grid-column:1/-1}
-    label{font-size:14px;font-weight:700;display:block;margin-bottom:6px}
-    input[type=text],input[type=tel],select,textarea{width:100%;padding:12px;border:1px solid #ccc;border-radius:10px}
-    textarea{min-height:80px}
-    .consent{grid-column:1/-1;font-size:13px}
-    .submit{grid-column:1/-1;text-align:center}
-    footer{text-align:center;font-size:14px;color:#777;padding:30px}
-    @media (max-width:980px){.grid-3{grid-template-columns:1fr}form{grid-template-columns:1fr}header.hero h1{font-size:44px}}
+    section {padding:60px 20px; max-width:1100px; margin:auto;}
+    section h2 {color:#002855; text-align:center; margin-bottom:40px; font-size:2em; font-weight:800;}
+
+    .benefits {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin-top:40px;}
+    .benefit {background:#fff; border-radius:12px; padding:25px; box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+    .benefit strong {color:#d50000;}
+
+    .cases {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
+    .case {background:#fff; border-radius:12px; padding:20px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+    .case img {width:80px; margin-bottom:15px;}
+    .case h3 {margin:10px 0; color:#002855;}
+    .case p {font-size:0.95em; color:#444;}
+    .case .amount {margin-top:10px; font-weight:bold; color:#d50000;}
+
+    form {background:#fff; padding:30px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); max-width:700px; margin:auto;}
+    form h3 {text-align:center; margin-bottom:20px; font-size:1.5em; color:#d50000;}
+    form label {display:block; margin-top:15px; font-weight:bold;}
+    form input, form select {width:100%; padding:12px; margin-top:5px; border:1px solid #ccc; border-radius:6px;}
+    form .row {display:flex; gap:15px;}
+    form .row > div {flex:1;}
+    form .submit-btn {background:#6a0dad; color:#fff; font-weight:bold; padding:15px; border:none; border-radius:8px; font-size:1.1em; margin-top:20px; width:100%; cursor:pointer;}
+
+    .faq {margin-top:60px;}
+    .faq-item {background:#fff; margin-bottom:15px; padding:20px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.05);}
+    .faq-item h4 {margin:0 0 10px; color:#002855;}
+
+    footer {background:#002855; color:#fff; text-align:center; padding:20px; margin-top:60px;}
   </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="wrap">
-      <div class="eyebrow">사업자 대출이 안된다구요? 금융사 대출이 어렵다구요?<br/>자재 사야하는데 현금흐름이 어려우신가요?</div>
-      <h1><strong>카드 <span class="accent">매출</span></strong>로<br/>대출 말고 <span class="accent">투자</span> 받으세요!</h1>
-      <ul class="checklist">
-        <li>신용등급 무관</li>
-        <li>담보 설정 불필요</li>
-        <li>신용점수 영향 없음</li>
-        <li>신용정보사 <b>미등록 상품</b>입니다</li>
-        <li>추후 은행거래, 정책자금 이용에 <b>부작용이 발생하지 않습니다</b></li>
-        <li>최대 <b>5억원까지</b> 지원</li>
-        <li>개인사업자 및 법인사업자 모두 가능</li>
-        <li>사업기간 3개월 이상, 카드매출 월 2천만원 이상</li>
-      </ul>
-      <div class="cta-row">
-        <a class="btn call" href="tel:01071363205">즉시 무료상담 010-7136-3205</a>
-        <a class="btn outline" href="#apply">온라인 간편 신청</a>
-      </div>
-    </div>
+
+  <header>
+    <p>사업자 대출이 어렵다구요? 자재 사야하는데 현금흐름이 막히셨나요?</p>
+    <h1>
+      카드 <span class="red">매출</span>로<br />
+      대출 말고 <span class="red">투자</span> 받으세요!
+    </h1>
+    <a href="tel:010-7136-3205" class="cta-btn">즉시 무료상담 010-7136-3205</a>
+    <a href="#apply" class="cta-btn blue">온라인 간편 신청</a>
   </header>
 
-  <section class="alt">
-    <div class="container">
-      <h2>왜 유동화인가요?</h2>
-      <div class="grid-3">
-        <div class="card"><b>대출기록 없음</b><span class="muted">카드매출 채권 담보 방식으로 진행되어 대출기록이 남지 않습니다.</span></div>
-        <div class="card"><b>빠른 심사</b><span class="muted">부동산·보증 없이 카드매출 데이터 중심 심사.</span></div>
-        <div class="card"><b>최대 5억원까지</b><span class="muted">월 카드매출/사업현황에 따라 한도 산정.</span></div>
-      </div>
+  <section>
+    <h2>왜 저희를 선택하나요?</h2>
+    <div class="benefits">
+      <div class="benefit">신용등급 <strong>무관</strong></div>
+      <div class="benefit">담보 설정 <strong>불필요</strong></div>
+      <div class="benefit">신용조회 <strong>영향 없음</strong></div>
+      <div class="benefit">최대 <strong>5억원</strong>까지 지원</div>
+      <div class="benefit">개인/법인사업자 모두 가능</div>
+      <div class="benefit">정책자금·추후대출에 <strong>불이익 없음</strong></div>
     </div>
   </section>
 
   <section>
-    <div class="container">
-      <h2>진행과정</h2>
-      <div class="grid-3">
-        <div class="card step"><div class="num">01</div><div><b>온라인 접수</b><br><span class="muted">기본 정보 제출</span></div></div>
-        <div class="card step"><div class="num">02</div><div><b>자료확인/가심사</b><br><span class="muted">카드매출·사업현황 확인</span></div></div>
-        <div class="card step"><div class="num">03</div><div><b>사임용 수임/채권설정</b><br><span class="muted">필요 서류 전자서명</span></div></div>
-        <div class="card step"><div class="num">04</div><div><b>본심사/한도확정</b><br><span class="muted">한도·조건 제시</span></div></div>
-        <div class="card step"><div class="num">05</div><div><b>실행/지급</b><br><span class="muted">계약 및 자금 지급</span></div></div>
-        <div class="card step"><div class="num">06</div><div><b>사후관리</b><br><span class="muted">정산/연장/증액 컨설팅</span></div></div>
+    <h2>카드매출 유동화자금 확보 사례</h2>
+    <div class="cases">
+      <div class="case">
+        <img src="images/cafe.png" alt="카페 운영">
+        <h3>카페 운영</h3>
+        <p>사업 15년 / 매출보증 7천만원</p>
+        <div class="amount">유동화자금 5천만원</div>
       </div>
-      <p class="muted" style="margin-top:10px">* 종결수수료, 카드단말기 변경 없음. 세부 조건은 심사 결과에 따릅니다.</p>
+      <div class="case">
+        <img src="images/massage.png" alt="마사지샵">
+        <h3>마사지샵</h3>
+        <p>사업 10년 / 매출보증 1억5천만원</p>
+        <div class="amount">유동화자금 1억원</div>
+      </div>
+      <div class="case">
+        <img src="images/clinic.png" alt="성형외과">
+        <h3>성형외과</h3>
+        <p>사업 8년 / 매출보증 7천만원</p>
+        <div class="amount">유동화자금 1억5천만원</div>
+      </div>
+      <div class="case">
+        <img src="images/store.png" alt="편의점">
+        <h3>편의점</h3>
+        <p>사업 5년 / 매출보증 7천만원</p>
+        <div class="amount">유동화자금 4천만원</div>
+      </div>
     </div>
   </section>
 
-  <section id="apply" class="form-area">
-    <h2><strong style="color:#d50000">무료로</strong> 상담 신청하기</h2>
-    <form id="leadForm">
-      <div>
-        <label for="name">이름 *</label>
-        <input type="text" id="name" name="name" required />
+  <section id="apply">
+    <form>
+      <h3>무료로 상담 신청하기</h3>
+      <div class="row">
+        <div>
+          <label>이름 *</label>
+          <input type="text" required>
+        </div>
+        <div>
+          <label>전화번호 *</label>
+          <input type="tel" placeholder="010-0000-0000" required>
+        </div>
       </div>
-      <div>
-        <label for="phone">전화번호 *</label>
-        <input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required />
+      <div class="row">
+        <div>
+          <label>사업 기간 *</label>
+          <select required>
+            <option>3개월 미만</option>
+            <option>3개월 이상</option>
+          </select>
+        </div>
+        <div>
+          <label>최근 3개월 평균매출 *</label>
+          <select required>
+            <option>월 1000만원 미만</option>
+            <option>월 1000만원 이상</option>
+          </select>
+        </div>
       </div>
-      <div>
-        <label for="period">사업 기간 *</label>
-        <select id="period" name="period" required>
-          <option>3개월 미만</option>
-          <option>3개월 이상</option>
-        </select>
-      </div>
-      <div>
-        <label for="sales">최근 3개월 평균 매출 *</label>
-        <select id="sales" name="sales" required>
-          <option>월 1000만원 미만</option>
-          <option>월 1000만원 이상</option>
-        </select>
-      </div>
-      <div class="full">
-        <label for="memo">메모</label>
-        <textarea id="memo" name="memo" placeholder="상담 가능 시간 / 지역 / 희망금액 등"></textarea>
-      </div>
-      <div class="consent">
-        <input type="checkbox" id="agree" required> <label for="agree">(필수) 개인정보 수집·이용에 동의합니다. 수집항목: 이름/연락처/사업정보, 보유기간: 상담 종료 후 3개월.</label>
-      </div>
-      <input type="hidden" name="utm_source" id="utm_source">
-      <input type="hidden" name="utm_medium" id="utm_medium">
-      <input type="hidden" name="utm_campaign" id="utm_campaign">
-      <input type="hidden" name="referrer" id="referrer">
-      <input type="hidden" name="user_agent" id="user_agent">
-      <input type="hidden" name="timestamp" id="timestamp">
-      <div class="submit">
-        <button type="submit" class="btn primary">무료 상담 진행하기</button>
-        <a class="btn call" href="tel:01071363205">전화로 빠른 상담</a>
-      </div>
-      <div id="formNotice" class="full" style="display:none; padding:10px; border-radius:10px; margin-top:8px"></div>
+      <label>
+        <input type="checkbox" required> 개인정보 수집 및 활용에 동의합니다.
+      </label>
+      <button type="submit" class="submit-btn">무료 상담 진행하기</button>
     </form>
   </section>
 
   <section class="faq">
-    <div class="container">
-      <h2>자주 받는 질문</h2>
-      <div class="grid-3">
-        <div class="card">
-          <div class="row">
-            <span class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="10" stroke="#1034a6" stroke-width="2"/>
-                <path d="M9.5 9a2.5 2.5 0 1 1 5 0c0 2-2.5 2-2.5 4" stroke="#1034a6" stroke-width="2" stroke-linecap="round"/>
-                <circle cx="12" cy="17" r="1.2" fill="#1034a6"/>
-              </svg>
-            </span>
-            <b>신용등급 떨어지나요?</b>
-          </div>
-          <span class="muted">아니요. 대출로 잡히지 않아 신용정보사에 등록되지 않습니다.</span>
-        </div>
-
-        <div class="card">
-          <div class="row">
-            <span class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 18h6M10 22h4" stroke="#f0a500" stroke-width="2" stroke-linecap="round"/>
-                <path d="M8 10a4 4 0 1 1 8 0c0 2-1.5 3-2 4H10c-.5-1-2-2-2-4Z" stroke="#f0a500" stroke-width="2" fill="none"/>
-              </svg>
-            </span>
-            <b>담보/보증 필요 없나요?</b>
-          </div>
-          <span class="muted">예. 카드매출 채권 자체를 담보로 활용합니다.</span>
-        </div>
-
-        <div class="card">
-          <div class="row">
-            <span class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="10" stroke="#0b875b" stroke-width="2"/>
-                <path d="M7 12l3 3 7-7" stroke="#0b875b" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <b>추후 은행·정책자금 이용 영향?</b>
-          </div>
-          <span class="muted">부작용이 발생하지 않습니다.</span>
-        </div>
-      </div>
+    <h2>자주 묻는 질문</h2>
+    <div class="faq-item">
+      <h4>신용등급이 낮아도 가능한가요?</h4>
+      <p>네, 신용등급과 무관하게 카드 매출만 있으면 가능합니다.</p>
+    </div>
+    <div class="faq-item">
+      <h4>담보가 꼭 필요한가요?</h4>
+      <p>아니요, 담보 설정은 필요 없습니다.</p>
+    </div>
+    <div class="faq-item">
+      <h4>대출과 어떤 차이가 있나요?</h4>
+      <p>신용정보에 기록되지 않아 추후 은행거래나 정책자금 이용 시 불이익이 없습니다.</p>
     </div>
   </section>
 
   <footer>
-    <p>상담문의: 010-7136-3205 | © 카드매출 유동화</p>
+    &copy; 2025 카드매출 유동화. All rights reserved.
   </footer>
 
-  <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxYOUR_DEPLOY_ID/exec"; // 교체 필요
-    const params = new URLSearchParams(location.search);
-    const setVal = (id,v)=>{const el=document.getElementById(id); if(el) el.value=v||"";};
-    setVal('utm_source', params.get('utm_source'));
-    setVal('utm_medium', params.get('utm_medium'));
-    setVal('utm_campaign', params.get('utm_campaign'));
-    setVal('referrer', document.referrer);
-    setVal('user_agent', navigator.userAgent);
-    setVal('timestamp', new Date().toISOString());
-
-    const form = document.getElementById('leadForm');
-    const notice = document.getElementById('formNotice');
-    form.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      notice.style.display='block';
-      notice.style.background='#eef7f2';
-      notice.style.border='1px solid #bfe7d2';
-      notice.style.color='#0b875b';
-      notice.textContent='접수 중입니다…';
-      try{
-        const fd = new FormData(form);
-        await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:fd});
-        notice.textContent='접수 완료! 담당자가 곧 연락드립니다.';
-        form.reset();
-      }catch(err){
-        notice.style.background='#ffecec';
-        notice.style.border='1px solid #ffb3b3';
-        notice.style.color='#a40000';
-        notice.textContent='제출 오류가 발생했습니다. 전화 상담(010-7136-3205)으로 도와드릴게요.';
-      }
-    });
-  </script>
 </body>
 </html>
