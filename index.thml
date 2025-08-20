@@ -402,7 +402,7 @@ function testMail(){ MailApp.sendEmail(DEFAULT_TO, '테스트', '메일 전송 O
   <script>
     // 0) 스크립트 URL 로딩/저장 (배포 후 파일 수정 없이 현장 설정 가능)
     const DEFAULT_NOTIFY = "yumicheon995@gmail.com";
-    let SCRIPT_URL = localStorage.getItem('script_url') || "https://script.google.com/macros/s/AKfycbxYOUR_DEPLOY_ID/exec"; // 기본값(미설정)
+    let SCRIPT_URL = localStorage.getItem('script_url') || "https://script.google.com/macros/s/AKfycbyWlhHzZ2jjxUolLfl0nQ9f55c1ms2mU06ESQ7G9F2l7YMRYFUVb4iVS3kPji3FrLfA/exec"; // 기본값
 
     // 1) 트래킹 메타 채우기
     const params = new URLSearchParams(location.search);
