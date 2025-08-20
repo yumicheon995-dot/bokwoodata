@@ -23,7 +23,7 @@
     .checklist{margin-top:22px;display:grid;gap:10px;justify-content:center}
     .checklist li{font-size:20px;text-align:left}
     .checklist li::before{content:"✔ ";color:#103464;font-weight:900;margin-right:4px}
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;justify-content:center}
+    .cta-row{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:24px}
     .btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 24px;border-radius:14px;font-weight:800;border:2px solid transparent;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.08);transition:.25s}
     .btn:hover{transform:translateY(-2px)}
     .btn.call{background:var(--btn-yellow);color:#000}
@@ -31,7 +31,7 @@
     .btn.primary{background:var(--purple);color:#fff}
     .btn.primary:after{content:" →";font-weight:900}
     /* CTA 버튼(히어로 영역) 1.5배 확대 */
-    .cta-row .btn{padding:26px 40px;border-radius:20px;font-size:28px}
+    .cta-row .btn{padding:26px 40px;border-radius:20px;font-size:28px;width:min(640px,100%)}
 
     /* SECTION / CARD */
     section{padding:64px 0}
@@ -63,7 +63,9 @@
     input[type=text],input[type=tel],select,textarea{width:100%;padding:14px;border:1px solid #ccc;border-radius:12px}
     textarea{min-height:80px}
     .consent{grid-column:1/-1;font-size:13px}
-    .submit{grid-column:1/-1;text-align:center}
+    .submit{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:stretch}
+.submit .btn{width:100%;justify-content:center;padding:18px 16px;font-size:18px;border-radius:14px}
+@media (max-width:560px){.submit{grid-template-columns:1fr}}
 
     /* FAQ */
     .faq .row{display:flex;align-items:center;gap:10px;margin-bottom:6px}
@@ -90,9 +92,17 @@
     }
   /* === Mobile number alignment fix === */
 .btn{line-height:1.15;text-wrap:balance;}
-.btn.call{font-size:clamp(18px,5.5vw,28px);}
+header.hero .btn.call{font-size:clamp(18px,5.5vw,28px);} 
+.form-area .btn.call{font-size:18px;} 
 .btn.call .tel{white-space:nowrap;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';letter-spacing:.02em;}
-@media(max-width:380px){.btn.call{font-size:clamp(16px,5.2vw,22px);padding:14px 16px;}}
+@media(max-width:380px){header.hero .btn.call{font-size:clamp(16px,5.2vw,22px);padding:14px 16px;}}
+/* Blink + CTA color changes */
+header.hero .btn.call{background:var(--brand-red);color:#fff}
+.btn.call .tel{margin-left:.35em}
+.blink{animation:blink 1.25s ease-in-out infinite;will-change:opacity}
+.blink:hover{animation-play-state:paused}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.72}}
+@media (prefers-reduced-motion: reduce){.blink{animation:none}}
 </style>
 </head>
 <body>
@@ -112,8 +122,8 @@
         <li>사업기간 3개월 이상, 카드매출 월 2천만원 이상</li>
       </ul>
       <div class="cta-row">
-        <a class="btn call" href="tel:01071363205">즉시 무료상담 <span class="tel">010&#8209;7136&#8209;3205<\/span><\/a>
-        <a class="btn outline" href="#apply">온라인 간편 신청</a>
+        <a class=\"btn call blink\" href=\"tel:01071363205\">즉시 무료상담 <span class="tel">010&#8209;7136&#8209;3205</span></a>
+        <a class=\"btn outline blink\" href=\"#apply\">온라인 간편 신청<\/a>
       </div>
       <div id="adminBanner" class="banner" style="display:none">관리자 설정에서 <b>웹앱 URL</b>을 저장하면 폼 제출이 시트로 전송됩니다.</div>
     </div>
