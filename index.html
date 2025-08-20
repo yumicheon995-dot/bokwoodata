@@ -88,7 +88,12 @@
       form{grid-template-columns:1fr}
       header.hero h1{font-size:48px}
     }
-  </style>
+  /* === Mobile number alignment fix === */
+.btn{line-height:1.15;text-wrap:balance;}
+.btn.call{font-size:clamp(18px,5.5vw,28px);}
+.btn.call .tel{white-space:nowrap;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';letter-spacing:.02em;}
+@media(max-width:380px){.btn.call{font-size:clamp(16px,5.2vw,22px);padding:14px 16px;}}
+</style>
 </head>
 <body>
   <!-- HERO -->
@@ -107,7 +112,7 @@
         <li>사업기간 3개월 이상, 카드매출 월 2천만원 이상</li>
       </ul>
       <div class="cta-row">
-        <a class="btn call" href="tel:01071363205">즉시 무료상담 010-7136-3205</a>
+        <a class="btn call" href="tel:01071363205">즉시 무료상담 <span class="tel">010&#8209;7136&#8209;3205<\/span><\/a>
         <a class="btn outline" href="#apply">온라인 간편 신청</a>
       </div>
       <div id="adminBanner" class="banner" style="display:none">관리자 설정에서 <b>웹앱 URL</b>을 저장하면 폼 제출이 시트로 전송됩니다.</div>
@@ -308,7 +313,16 @@ function sendSmsTwilio(text){
   const FROM  = props.getProperty('TWILIO_FROM');
   if(!SID || !TOKEN || !FROM) return; // 키 없으면 조용히 스킵
   const url = 'https://api.twilio.com/2010-04-01/Accounts/'+SID+'/Messages.json';
-  const payload = { To: OWNER_PHONE.startsWith('+')? OWNER_PHONE : toE164KR(OWNER_PHONE), From: FROM, Body: text };
+  const payload = {
+    To: OWNER_PHONE.startsWith('+')? OWNER_PHONE : toE164KR(OWNER_PHONE),
+    Body: text
+  };
+  // FROM이 Messaging Service SID(MG...)면 해당 필드 사용, 아니면 전화번호로 From 사용
+  if(/^MG[a-zA-Z0-9]{24,}$/.test(FROM)) {
+    payload.MessagingServiceSid = FROM;
+  } else {
+    payload.From = FROM; // 예: +15005550006 (Twilio 발신번호)
+  }
   const options = { method:'post', payload, muteHttpExceptions:true, headers:{ Authorization:'Basic '+Utilities.base64Encode(SID+':'+TOKEN) } };
   UrlFetchApp.fetch(url, options);
 }
@@ -369,7 +383,8 @@ function testMail(){ MailApp.sendEmail(DEFAULT_TO, '테스트', '메일 전송 O
   <script>
     // 0) 스크립트 URL 로딩/저장 (배포 후 파일 수정 없이 현장 설정 가능)
     const DEFAULT_NOTIFY = "yumicheon995@gmail.com";
-    let SCRIPT_URL = localStorage.getItem('script_url') || "https://script.google.com/macros/s/AKfycbyWlhHzZ2jjxUolLfl0nQ9f55c1ms2mU06ESQ7G9F2l7YMRYFUVb4iVS3kPji3FrLfA/exec"
+    let SCRIPT_URL = localStorage.getItem('script_url') || "https://script.google.com/macros/s/AKfycbxYOUR_DEPLOY_ID/exec"; // 기본값(미설정)
+
     // 1) 트래킹 메타 채우기
     const params = new URLSearchParams(location.search);
     const setVal = (id,v)=>{const el=document.getElementById(id); if(el) el.value=v||"";};
