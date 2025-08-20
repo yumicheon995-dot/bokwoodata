@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+# Write the latest V1 HTML to a downloadable file for the user
+html = """<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
@@ -229,7 +230,7 @@
     setVal('utm_source', params.get('utm_source'));
     setVal('utm_medium', params.get('utm_medium'));
     setVal('utm_campaign', params.get('utm_campaign'));
-    setVal('referrer', document.referrer);
+    setVal('referrer', document.referrer));
     setVal('user_agent', navigator.userAgent);
     setVal('timestamp', new Date().toISOString());
 
@@ -258,3 +259,8 @@
   </script>
 </body>
 </html>
+"""
+with open("/mnt/data/index.html", "w", encoding="utf-8") as f:
+    f.write(html)
+
+"/mnt/data/index.html"
