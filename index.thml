@@ -103,13 +103,22 @@ header.hero .btn.call{background:var(--brand-red);color:#fff}
 .blink:hover{animation-play-state:paused}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.72}}
 @media (prefers-reduced-motion: reduce){.blink{animation:none}}
+/* 모바일 버튼 단어 분리 방지 및 자간 보정 */
+.btn{word-break:keep-all}
+.btn.call{gap:.6em}
+.btn.call .label{white-space:nowrap;letter-spacing:-0.01em}
+/* === Hero CTA no-wrap & spacing fix === */
+header.hero .btn.call{flex-wrap:nowrap;white-space:nowrap}
+header.hero .btn.call .label{display:inline-block;flex:0 0 auto;white-space:nowrap;letter-spacing:-0.015em}
+header.hero .btn.call .tel{flex:0 0 auto;white-space:nowrap}
+@media(max-width:520px){header.hero .btn.call{gap:.4em;font-size:clamp(15px,4.6vw,21px)}}
 </style>
 </head>
 <body>
   <!-- HERO -->
   <header class="hero">
     <div class="wrap">
-      <div class="eyebrow">사업자 대출이 안된다구요? 금융사 대출이 어렵다구요?<br/>자재 사야하는데 현금흐름이 어려우신가요?</div>
+      <div class="eyebrow">사업자 대출이 안된다구요?<br/>금융사 대출도 막혔다구요?</div>
       <h1>카드매출로 <span class="accent">투자</span> 받으세요!</h1>
       <ul class="checklist">
         <li>신용등급 무관</li>
@@ -122,8 +131,8 @@ header.hero .btn.call{background:var(--brand-red);color:#fff}
         <li>사업기간 3개월 이상, 카드매출 월 2천만원 이상</li>
       </ul>
       <div class="cta-row">
-        <a class=\"btn call blink\" href=\"tel:01071363205\">즉시 무료상담 <span class="tel">010&#8209;7136&#8209;3205</span></a>
-        <a class=\"btn outline blink\" href=\"#apply\">온라인 간편 신청<\/a>
+        <a class="btn call blink" href="tel:01071363205"><span class="label">즉시&nbsp;무료상담</span> <span class="tel">010&#8209;7136&#8209;3205</span></a>
+        <a class="btn outline blink" href="#apply">온라인 간편 신청</a>
       </div>
       <div id="adminBanner" class="banner" style="display:none">관리자 설정에서 <b>웹앱 URL</b>을 저장하면 폼 제출이 시트로 전송됩니다.</div>
     </div>
