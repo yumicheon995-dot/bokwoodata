@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>카드 매출 기반 유동화</title>
+  <style>
+    body {margin:0; font-family:'Noto Sans KR', sans-serif; line-height:1.6; background:#f8f9fb; color:#222;}
+    header {background:#e6f0fa; color:#002855; text-align:center; padding:60px 20px;}
+    header h1 {font-size:clamp(32px,6vw,56px); font-weight:900; line-height:1.3;}
+    header h1 span.red {color:#d50000;}
+    header h1 span.blue {color:#002855;}
+    header p {font-size:1.1em; margin-bottom:30px;}
+    .cta-btn {background:#ffcc00; color:#000; font-weight:bold; padding:15px 25px; border-radius:6px; display:inline-block; margin:10px; font-size:1.1em; text-decoration:none;}
+    .cta-btn.blue {background:#002855; color:#fff;}
+
+    section {padding:60px 20px; max-width:1100px; margin:auto;}
+    section h2 {color:#002855; text-align:center; margin-bottom:40px; font-size:2em; font-weight:800;}
+
+    .benefits {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin-top:40px;}
+    .benefit {background:#fff; border-radius:12px; padding:25px; box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+    .benefit strong {color:#d50000;}
+
+    .cases {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
+    .case {background:#fff; border-radius:12px; padding:20px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+    .case img {width:80px; margin-bottom:15px;}
+    .case h3 {margin:10px 0; color:#002855;}
+    .case p {font-size:0.95em; color:#444;}
+    .case .amount {margin-top:10px; font-weight:bold; color:#d50000;}
+
+    form {background:#fff; padding:30px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); max-width:700px; margin:auto;}
+    form h3 {text-align:center; margin-bottom:20px; font-size:1.5em; color:#d50000;}
+    form label {display:block; margin-top:15px; font-weight:bold;}
+    form input, form select {width:100%; padding:12px; margin-top:5px; border:1px solid #ccc; border-radius:6px;}
+    form .row {display:flex; gap:15px;}
+    form .row > div {flex:1;}
+    form .submit-btn {background:#6a0dad; color:#fff; font-weight:bold; padding:15px; border:none; border-radius:8px; font-size:1.1em; margin-top:20px; width:100%; cursor:pointer;}
+
+    .faq {margin-top:60px;}
+    .faq-item {background:#fff; margin-bottom:15px; padding:20px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.05);}
+    .faq-item h4 {margin:0 0 10px; color:#002855;}
+
+    footer {background:#002855; color:#fff; text-align:center; padding:20px; margin-top:60px;}
+  </style>
+</head>
+<body>
+
+  <header>
+    <p>사업자 대출이 어렵다구요? 자재 사야하는데 현금흐름이 막히셨나요?</p>
+    <h1>
+      카드 <span class="red">매출</span>로<br />
+      대출 말고 <span class="red">투자</span> 받으세요!
+    </h1>
+    <a href="tel:010-7136-3205" class="cta-btn">즉시 무료상담 010-7136-3205</a>
+    <a href="#apply" class="cta-btn blue">온라인 간편 신청</a>
+  </header>
+
+  <section>
+    <h2>왜 저희를 선택하나요?</h2>
+    <div class="benefits">
+      <div class="benefit">신용등급 <strong>무관</strong></div>
+      <div class="benefit">담보 설정 <strong>불필요</strong></div>
+      <div class="benefit">신용조회 <strong>영향 없음</strong></div>
+      <div class="benefit">최대 <strong>5억원</strong>까지 지원</div>
+      <div class="benefit">개인/법인사업자 모두 가능</div>
+      <div class="benefit">정책자금·추후대출에 <strong>불이익 없음</strong></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>카드매출 유동화자금 확보 사례</h2>
+    <div class="cases">
+      <div class="case">
+        <img src="images/cafe.png" alt="카페 운영">
+        <h3>카페 운영</h3>
+        <p>사업 15년 / 매출보증 7천만원</p>
+        <div class="amount">유동화자금 5천만원</div>
+      </div>
+      <div class="case">
+        <img src="images/massage.png" alt="마사지샵">
+        <h3>마사지샵</h3>
+        <p>사업 10년 / 매출보증 1억5천만원</p>
+        <div class="amount">유동화자금 1억원</div>
+      </div>
+      <div class="case">
+        <img src="images/clinic.png" alt="성형외과">
+        <h3>성형외과</h3>
+        <p>사업 8년 / 매출보증 7천만원</p>
+        <div class="amount">유동화자금 1억5천만원</div>
+      </div>
+      <div class="case">
+        <img src="images/store.png" alt="편의점">
+        <h3>편의점</h3>
+        <p>사업 5년 / 매출보증 7천만원</p>
+        <div class="amount">유동화자금 4천만원</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="apply">
+    <form>
+      <h3>무료로 상담 신청하기</h3>
+      <div class="row">
+        <div>
+          <label>이름 *</label>
+          <input type="text" required>
+        </div>
+        <div>
+          <label>전화번호 *</label>
+          <input type="tel" placeholder="010-0000-0000" required>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label>사업 기간 *</label>
+          <select required>
+            <option>3개월 미만</option>
+            <option>3개월 이상</option>
+          </select>
+        </div>
+        <div>
+          <label>최근 3개월 평균매출 *</label>
+          <select required>
+            <option>월 1000만원 미만</option>
+            <option>월 1000만원 이상</option>
+          </select>
+        </div>
+      </div>
+      <label>
+        <input type="checkbox" required> 개인정보 수집 및 활용에 동의합니다.
+      </label>
+      <button type="submit" class="submit-btn">무료 상담 진행하기</button>
+    </form>
+  </section>
+
+  <section class="faq">
+    <h2>자주 묻는 질문</h2>
+    <div class="faq-item">
+      <h4>신용등급이 낮아도 가능한가요?</h4>
+      <p>네, 신용등급과 무관하게 카드 매출만 있으면 가능합니다.</p>
+    </div>
+    <div class="faq-item">
+      <h4>담보가 꼭 필요한가요?</h4>
+      <p>아니요, 담보 설정은 필요 없습니다.</p>
+    </div>
+    <div class="faq-item">
+      <h4>대출과 어떤 차이가 있나요?</h4>
+      <p>신용정보에 기록되지 않아 추후 은행거래나 정책자금 이용 시 불이익이 없습니다.</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 카드매출 유동화. All rights reserved.
+  </footer>
+
+</body>
+</html>
