@@ -369,8 +369,7 @@ function testMail(){ MailApp.sendEmail(DEFAULT_TO, '테스트', '메일 전송 O
   <script>
     // 0) 스크립트 URL 로딩/저장 (배포 후 파일 수정 없이 현장 설정 가능)
     const DEFAULT_NOTIFY = "yumicheon995@gmail.com";
-    let SCRIPT_URL = localStorage.getItem('script_url') || "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLjqa8PQDy8-KJNb4LMAz72fyE4pbmFrPgKi6ZDOzA1yzB41Fo_0LnYtHz6VxmezS4Lufu3Ht5M-BUwSqZjcjadwgqp22AxN5jxKN9ktOnlracfU5bqObZiIN4FZ5_jS8idCze4iWt9FYYS5oPz6KOo0pwqA5nDo4vSySymFcbYgsCDlOz_8Wgy6U3H8gjTrBdcgE0-mNk6obXAXTm3ykKLmBKrvUk86i3kUq8q-qTMpCxZEdazYGFTZleE982_qmSi9ebgpcmaGjqde5icMY09mVDlmzg&lib=MHcAliQP2uM_Z-PnCjyR3VQGgx2e27Osd"; // 기본값(미설정)
-
+    let SCRIPT_URL = localStorage.getItem('script_url') || "https://script.google.com/macros/s/AKfycbyWlhHzZ2jjxUolLfl0nQ9f55c1ms2mU06ESQ7G9F2l7YMRYFUVb4iVS3kPji3FrLfA/exec"
     // 1) 트래킹 메타 채우기
     const params = new URLSearchParams(location.search);
     const setVal = (id,v)=>{const el=document.getElementById(id); if(el) el.value=v||"";};
