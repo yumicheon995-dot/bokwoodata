@@ -276,8 +276,81 @@
         </div>
         <div>
           <b>3) Apps Script 코드 복사</b>
-          <p class="note">아래 코드를 시트의 <b>확장 프로그램 → Apps Script</b>에 붙여넣고 <b>배포 → 새 배포 → 웹 앱</b>으로 공개(모든 사용자)하세요.<br>SMS 알림은 <b>스크립트 속성</b>에 <code>TWILIO_SID</code>, <code>TWILIO_TOKEN</code>, <code>TWILIO_FROM</code>만 입력하면 <b>010-7136-3205</b>로 자동 전송됩니다. 번호는 코드에 고정되어 있어 수정할 필요가 없습니다.</p>
-          <textarea id="gasCode" readonly>// === 설정 (시트 없어
+          <p class="note">아래 코드를 시트의 <b>확장 프로그램 → Apps Script</b>에 붙여넣고 <b>배포 → 새 배포 → 웹 앱</b>으로 공개(모든 사용자)하세요.<br><b>시트 설정이 없어도 메일·문자가 동작</b>합니다. 시트 기록을 원하면 코드 상단의 <code>SHEET_ID</code>만 넣어주세요.<br>SMS는 <b>스크립트 속성</b>에 <code>TWILIO_SID</code>, <code>TWILIO_TOKEN</code>, <code>TWILIO_FROM</code>을 한 번만 저장하면 <b>010-7136-3205</b>로 자동 전송됩니다.</p>
+          <textarea id="gasCode" readonly>// === 설정 (시트 없어도 메일/SMS 발송) ===
+const DEFAULT_TO = 'yumicheon995@gmail.com';   // 수신 메일(기본)
+const OWNER_PHONE = '+821071363205';           // SMS 수신 번호(고정)
+const SHEET_ID = '';                           // (옵션) 시트 ID. 비워두면 기록 생략
+const SHEET_NAME = '시트1';
+
+function getSheet(){
+  if(!SHEET_ID) return null;
+  try{
+    const ss = SpreadsheetApp.openById(SHEET_ID);
+    return ss.getSheetByName(SHEET_NAME) || ss.getActiveSheet();
+  }catch(e){ return null; }
+}
+function safeAppend(row){
+  try{ const sh = getSheet(); if(sh) sh.appendRow(row); }catch(e){}
+}
+
+function toE164KR(num){ // 010-1234-5678 -> +821012345678
+  const d = (num||'').replace(/[^0-9]/g,'');
+  if(!d) return '';
+  return d.startsWith('0') ? '+82'+d.slice(1) : (d.startsWith('82')? '+'+d : '+'+d);
+}
+
+function sendSmsTwilio(text){
+  // 스크립트 속성에 TWILIO_SID, TWILIO_TOKEN, TWILIO_FROM 저장 시 자동 발송
+  const props = PropertiesService.getScriptProperties();
+  const SID   = props.getProperty('TWILIO_SID');
+  const TOKEN = props.getProperty('TWILIO_TOKEN');
+  const FROM  = props.getProperty('TWILIO_FROM');
+  if(!SID || !TOKEN || !FROM) return; // 키 없으면 조용히 스킵
+  const url = 'https://api.twilio.com/2010-04-01/Accounts/'+SID+'/Messages.json';
+  const payload = { To: OWNER_PHONE.startsWith('+')? OWNER_PHONE : toE164KR(OWNER_PHONE), From: FROM, Body: text };
+  const options = { method:'post', payload, muteHttpExceptions:true, headers:{ Authorization:'Basic '+Utilities.base64Encode(SID+':'+TOKEN) } };
+  UrlFetchApp.fetch(url, options);
+}
+
+function doPost(e){
+  const p = e.parameter || {};
+  const when = new Date();
+
+  // (옵션) 시트 기록 — 설정되어 있지 않으면 자동 생략
+  safeAppend([ when, p.name||'', p.phone||'', p.period||'', p.sales||'', p.memo||'', p.utm_source||'', p.utm_medium||'', p.utm_campaign||'', p.referrer||'', p.user_agent||'', p.page_url||'' ]);
+
+  // 이메일 알림 (항상 시도)
+  const to = (p.notify || DEFAULT_TO).trim();
+  const subject = `새 상담 신청: ${p.name||''} / ${p.phone||''}`;
+  const html = `<h3>새 상담 신청</h3>
+      <table border=0 cellpadding=6>
+        <tr><td><b>이름</b></td><td>${p.name||''}</td></tr>
+        <tr><td><b>전화</b></td><td>${p.phone||''}</td></tr>
+        <tr><td><b>사업 기간</b></td><td>${p.period||''}</td></tr>
+        <tr><td><b>최근 3개월 매출</b></td><td>${p.sales||''}</td></tr>
+        <tr><td><b>메모</b></td><td>${(p.memo||'').replace(/
+/g,'<br>')}</td></tr>
+        <tr><td><b>페이지</b></td><td>${p.page_url||''}</td></tr>
+        <tr><td><b>Referrer</b></td><td>${p.referrer||''}</td></tr>
+        <tr><td><b>UA</b></td><td>${p.user_agent||''}</td></tr>
+      </table>`;
+  try{ if(to) MailApp.sendEmail({ to, subject, htmlBody: html }); }catch(err){}
+
+  // SMS 알림 (키가 있으면 자동 발송)
+  const sms = `[새 상담]
+이름: ${p.name||''}
+전화: ${p.phone||''}
+기간: ${p.period||''}
+매출: ${p.sales||''}`;
+  try{ sendSmsTwilio(sms); }catch(err){}
+
+  return ContentService.createTextOutput('OK');
+}
+
+function doGet(){ return ContentService.createTextOutput('READY'); }
+function testMail(){ MailApp.sendEmail(DEFAULT_TO, '테스트', '메일 전송 OK'); }
+</textarea>
           <div class="admin-actions">
             <button id="copyGAS" class="btn" type="button">코드 복사</button>
           </div>
