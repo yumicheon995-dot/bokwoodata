@@ -104,9 +104,50 @@ header.hero .btn.call{background:var(--brand-red);color:#fff}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.72}}
 @media (prefers-reduced-motion: reduce){.blink{animation:none}}
 </style>
-</head>
+<style id="mobile-lock">
+  /* 1) 데스크톱 기준 폭(디자인 기준 1200px)은 그대로 유지 */
+  #page{ width:1200px; margin:0 auto; }
+
+  /* 2) 한글 줄바꿈·자간 안정화 */
+  html,body{ margin:0; padding:0; }
+  body{ word-break: keep-all; letter-spacing:.01em; -webkit-text-size-adjust:100%; }
+
+  /* 3) 모바일에서 페이지 전체를 화면폭에 맞춰 '축소'해서 보여주기 */
+  @media (max-width:1200px){
+    html, body{ overflow-x:hidden; }
+    #page{
+      transform-origin: top left;
+      transform: scale(calc(100vw / 1200));
+    }
+    /* 스케일 축소로 실제 높이가 줄어들어 스크롤이 짧아지는 문제를 보정 */
+    body::after{
+      content:"";
+      display:block;
+      height: calc(var(--page-h, 2000px) * (100vw / 1200));
+    }
+  }
+</style>
+
+<script>
+  /* #page 실제 높이를 읽어서 --page-h 변수에 저장 → 스크롤 높이 보정 */
+  (function(){
+    function setH(){
+      var page = document.getElementById('page');
+      if(!page) return;
+      var h = page.offsetHeight;
+      document.documentElement.style.setProperty('--page-h', h + 'px');
+    }
+    window.addEventListener('load', setH);
+    window.addEventListener('resize', setH);
+    setH();
+  })();
+</script>
+
+</head><meta name="viewport" content="width=device-width, initial-scale=1">
+</div><!-- #page -->
 <body>
-  <!-- HERO -->
+ <div id="page">
+ <!-- HERO -->
   <header class="hero">
     <div class="wrap">
       <div class="eyebrow">사업자 대출이 안된다구요? 금융사 대출이 어렵다구요?<br/>자재 사야하는데 현금흐름이 어려우신가요?</div>
@@ -518,3 +559,4 @@ function testMail(){ MailApp.sendEmail(DEFAULT_TO, '테스트', '메일 전송 O
   </script>
 </body>
 </html>
+
