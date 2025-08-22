@@ -1,529 +1,243 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet" />
-  <title>카드 매출 유동화 | 무료 상담 신청</title>
-  <meta name="description" content="사업자 대출이 막혀도 가능합니다. 카드 매출 채권 유동화로 운영자금 즉시 확보! 신용등급 무관, 담보/보증 불필요, 신용점수 영향 없음." />
-  <style>
-    :root{--brand-red:#d50000;--brand-blue:#1034a6;--ink:#0c1a2a;--muted:#5a5f6a;--hero:#e9f5ff;--section:#f7f7fb;--ok:#0b875b;--purple:#5e2ced;--btn-yellow:#ffcc00;--btn-dark:#0e2237}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:'Pretendard','Noto Sans KR',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f6f9fc;color:#111;line-height:1.6}
-    a{color:inherit}
-    .container{max-width:1120px;margin:0 auto;padding:0 20px}
+# 🚀 GitHub & Vercel 배포 가이드
 
-    /* HERO */
-    header.hero{background:var(--hero);padding:72px 24px;text-align:center;position:relative}
-    .hero .wrap{max-width:980px;margin:0 auto}
-    .eyebrow{color:#41566e;font-weight:700;font-size:22px;line-height:1.5}
-    header.hero h1{font-family:'Pretendard','Noto Sans KR',system-ui,sans-serif;font-weight:700;font-size:64px;line-height:1.08;color:#103464;margin:18px 0 12px;letter-spacing:-0.02em}
-    header.hero h1 .accent{color:var(--brand-red)}
-    header.hero h1 strong{font-weight:inherit;letter-spacing:inherit;font-family:inherit}
-    .checklist{margin-top:22px;display:grid;gap:10px;justify-content:center}
-    .checklist li{font-size:20px;text-align:left}
-    .checklist li::before{content:"✔ ";color:#103464;font-weight:900;margin-right:4px}
-    .cta-row{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:24px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 24px;border-radius:14px;font-weight:800;border:2px solid transparent;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.08);transition:.25s}
-    .btn:hover{transform:translateY(-2px)}
-    .btn.call{background:var(--btn-yellow);color:#000}
-    .btn.outline{background:var(--btn-dark);color:#fff;border-color:var(--btn-dark)}
-    .btn.primary{background:var(--purple);color:#fff}
-    .btn.primary:after{content:" →";font-weight:900}
-    /* CTA 버튼(히어로 영역) 1.5배 확대 */
-    .cta-row .btn{padding:26px 40px;border-radius:20px;font-size:28px;width:min(640px,100%)}
+## 📋 목차
+1. [GitHub 저장소 생성](#1-github-저장소-생성)
+2. [Git 초기 설정](#2-git-초기-설정)
+3. [코드 업로드](#3-코드-업로드)
+4. [Vercel 배포](#4-vercel-배포)
+5. [환경 변수 설정](#5-환경-변수-설정)
+6. [커스텀 도메인](#6-커스텀-도메인-설정)
+7. [문제 해결](#7-문제-해결)
 
-    /* SECTION / CARD */
-    section{padding:64px 0}
-    section.alt{background:var(--section)}
-    h2{font-size:32px;margin:0 0 14px;color:var(--brand-blue);text-align:center}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{background:#fff;border:1px solid #ececf3;border-radius:18px;padding:26px;box-shadow:0 4px 12px rgba(0,0,0,.05);transition:.25s;position:relative}
-    .card:hover{transform:translateY(-4px);box-shadow:0 6px 18px rgba(0,0,0,.1)}
-    .card b{display:block;margin-bottom:8px;font-size:20px}
-    .muted{color:var(--muted)}
-    .card .muted{font-size:14px}
+---
 
-    /* PROCESS */
-    .step{display:flex;gap:12px;align-items:flex-start}
-    .step .num{background:var(--brand-blue);color:#fff;font-weight:800;border-radius:9999px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;text-align:center}
-    /* 진행과정 : 행 + 화살표 구성 */
-    .process-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch;grid-auto-rows:1fr;margin-bottom:14px}
-    .process-row > .card{height:100%}
-    
-    @media (max-width:980px){.process-row{grid-template-columns:1fr;gap:12px}}
+## 1. GitHub 저장소 생성
 
+### 1.1 GitHub 웹사이트 접속
+1. [github.com](https://github.com) 접속
+2. 로그인 또는 회원가입
 
-    /* FORM */
-    section.form-area{background:#fff;max-width:860px;margin:40px auto;padding:40px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.08)}
-    section.form-area h2{text-align:center;font-size:26px;margin-bottom:26px}
-    form{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-    form .full{grid-column:1/-1}
-    label{font-size:15px;font-weight:700;display:block;margin-bottom:8px}
-    input[type=text],input[type=tel],select,textarea{width:100%;padding:14px;border:1px solid #ccc;border-radius:12px}
-    textarea{min-height:80px}
-    .consent{grid-column:1/-1;font-size:13px}
-    .submit{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:stretch}
-.submit .btn{width:100%;justify-content:center;padding:18px 16px;font-size:18px;border-radius:14px}
-@media (max-width:560px){.submit{grid-template-columns:1fr}}
+### 1.2 새 저장소 생성
+1. 우상단 **"+" 버튼** 클릭
+2. **"New repository"** 선택
+3. 저장소 정보 입력:
+   ```
+   Repository name: card-liquidation-landing
+   Description: 카드유동화 전문상담 랜딩페이지
+   Visibility: Public (또는 Private)
+   ```
+4. **"Create repository"** 클릭
 
-    /* FAQ */
-    .faq .row{display:flex;align-items:center;gap:10px;margin-bottom:6px}
-    .faq .ico{width:22px;height:22px;display:inline-block}
+---
 
-    /* ADMIN PANEL */
-    .admin-btn{position:fixed;right:14px;bottom:14px;background:#111;color:#fff;border-radius:999px;padding:10px 14px;font-weight:800;box-shadow:0 6px 16px rgba(0,0,0,.2);cursor:pointer;z-index:1000}
-    .admin-modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:1001}
-    .admin-card{background:#fff;border-radius:16px;max-width:720px;width:92%;padding:22px;border:1px solid #ececf3;box-shadow:0 10px 30px rgba(0,0,0,.15)}
-    .admin-card h3{margin:0 0 10px}
-    .admin-grid{display:grid;grid-template-columns:1fr;gap:14px}
-    .admin-card textarea{width:100%;min-height:170px;border:1px solid #ddd;border-radius:10px;padding:10px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace}
-    .admin-card input[type=text]{width:100%;padding:12px;border:1px solid #ccc;border-radius:10px}
-    .admin-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-    .note{font-size:13px;color:#5a5f6a}
-    .banner{position:absolute;left:0;right:0;bottom:-14px;margin:auto;background:#fff3cd;color:#7a5900;border:1px solid #f3d07a;width:fit-content;max-width:95%;padding:6px 10px;border-radius:10px}
+## 2. Git 초기 설정
 
-    footer{text-align:center;font-size:14px;color:#777;padding:30px}
+### 2.1 Git 사용자 정보 설정 (최초 1회만)
+```bash
+git config --global user.name "당신의이름"
+git config --global user.email "your-email@example.com"
+```
 
-    @media (max-width:980px){
-      .grid-3{grid-template-columns:1fr}
-      form{grid-template-columns:1fr}
-      header.hero h1{font-size:48px}
-    }
-  /* === Mobile number alignment fix === */
-.btn{line-height:1.15;text-wrap:balance;}
-header.hero .btn.call{font-size:clamp(18px,5.5vw,28px);} 
-.form-area .btn.call{font-size:18px;} 
-.btn.call .tel{white-space:nowrap;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';letter-spacing:.02em;}
-@media(max-width:380px){header.hero .btn.call{font-size:clamp(16px,5.2vw,22px);padding:14px 16px;}}
-/* Blink + CTA color changes */
-header.hero .btn.call{background:var(--brand-red);color:#fff}
-.btn.call .tel{margin-left:.35em}
-.blink{animation:blink 1.25s ease-in-out infinite;will-change:opacity}
-.blink:hover{animation-play-state:paused}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.72}}
-@media (prefers-reduced-motion: reduce){.blink{animation:none}}
-/* 모바일 버튼 단어 분리 방지 및 자간 보정 */
-.btn{word-break:keep-all}
-.btn.call{gap:.6em}
-.btn.call .label{white-space:nowrap;letter-spacing:-0.01em}
-/* === Hero CTA no-wrap & spacing fix === */
-header.hero .btn.call{flex-wrap:nowrap;white-space:nowrap}
-header.hero .btn.call .label{display:inline-block;flex:0 0 auto;white-space:nowrap;letter-spacing:-0.015em}
-header.hero .btn.call .tel{flex:0 0 auto;white-space:nowrap}
-@media(max-width:520px){header.hero .btn.call{gap:.4em;font-size:clamp(15px,4.6vw,21px)}}
-</style>
-</head>
-<body>
-  <!-- HERO -->
-  <header class="hero">
-    <div class="wrap">
-      <div class="eyebrow">사업자 대출이 안된다구요?<br/>금융사 대출도 막혔다구요?</div>
-      <h1>카드매출로 <span class="accent">투자</span> 받으세요!</h1>
-      <ul class="checklist">
-        <li>신용등급 무관</li>
-        <li>담보 설정 불필요</li>
-        <li>신용점수 영향 없음</li>
-        <li>신용정보사 <b>미등록 상품</b>입니다</li>
-        <li>추후 은행거래, 정책자금 이용에 <b>부작용이 발생하지 않습니다</b></li>
-        <li>최대 <b>5억원까지</b> 지원</li>
-        <li>개인사업자 및 법인사업자 모두 가능</li>
-        <li>사업기간 3개월 이상, 카드매출 월 2천만원 이상</li>
-      </ul>
-      <div class="cta-row">
-        <a class="btn call blink" href="tel:01071363205"><span class="label">즉시&nbsp;무료상담</span> <span class="tel">010&#8209;7136&#8209;3205</span></a>
-        <a class="btn outline blink" href="#apply">온라인 간편 신청</a>
-      </div>
-      <div id="adminBanner" class="banner" style="display:none">관리자 설정에서 <b>웹앱 URL</b>을 저장하면 폼 제출이 시트로 전송됩니다.</div>
-    </div>
-  </header>
+### 2.2 SSH 키 설정 (권장)
+```bash
+# SSH 키 생성
+ssh-keygen -t rsa -b 4096 -C "your-email@example.com"
 
-  <!-- WHY -->
-  <section class="alt">
-    <div class="container">
-      <h2>유동화란?</h2>
-      <div class="grid-3">
-        <div class="card"><b>대출기록 없음</b><span class="muted">카드매출 채권 담보 방식으로 진행되어 대출기록이 남지 않습니다.</span></div>
-        <div class="card"><b>빠른 심사</b><span class="muted">부동산·보증 없이 카드매출 데이터 중심 심사.</span></div>
-        <div class="card"><b>최대 5억원까지</b><span class="muted">월 카드매출/사업현황에 따라 한도 산정.</span></div>
-      </div>
-    </div>
-  </section>
+# SSH 키를 GitHub에 추가
+# 생성된 공개키를 GitHub Settings > SSH Keys에 등록
+cat ~/.ssh/id_rsa.pub
+```
 
-  <!-- PROCESS -->
-  <section>
-    <div class="container">
-      <h2>유동화 진행과정</h2>
-      <div class="process-row">
-        <div class="card step"><div class="num">01</div><div><b>상담 진행</b><br><span class="muted">자금조달을 위한 유선 상담</span></div></div>
-        
-        <div class="card step"><div class="num">02</div><div><b>자료제출</b><br><span class="muted">사업자 등록증 및 가맹점 매출 확인 (2~3일 소요)</span></div></div>
-        
-        <div class="card step"><div class="num">03</div><div><b>사업장 실사확인</b><br><span class="muted">심사 및 계약서 작성</span></div></div>
-      </div>
-      <div class="process-row">
-        <div class="card step"><div class="num">04</div><div><b>신탁등록</b><br><span class="muted">계약 확인</span></div></div>
-        
-        <div class="card step"><div class="num">05</div><div><b>자금지급</b><br><span class="muted">자금지급 완료</span></div></div>
-        
-        <div class="card step"><div class="num">06</div><div><b>상환</b><br><span class="muted">100일간 상환</span></div></div>
-      </div>
-      <p class="muted" style="margin-top:10px">* 종결수수료, 카드단말기 변경 없음. 세부 조건은 심사 결과에 따릅니다.</p>
-    </div>
-  </section>
+---
 
-  <!-- FORM -->
-  <section id="apply" class="form-area">
-    <h2><strong style="color:#d50000">무료로</strong> 상담 신청하기</h2>
-    <form id="leadForm">
-      <div>
-        <label for="name">이름 *</label>
-        <input type="text" id="name" name="name" required />
-      </div>
-      <div>
-        <label for="phone">전화번호 *</label>
-        <input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required />
-      </div>
-      <div>
-        <label for="period">사업 기간 *</label>
-        <select id="period" name="period" required>
-          <option>3개월 미만</option>
-          <option>3개월 이상</option>
-        </select>
-      </div>
-      <div>
-        <label for="sales">최근 3개월 평균 매출 *</label>
-        <select id="sales" name="sales" required>
-          <option>월 1000만원 미만</option>
-          <option>월 1000만원 이상</option>
-        </select>
-      </div>
-      <div class="full">
-        <label for="memo">메모</label>
-        <textarea id="memo" name="memo" placeholder="상담 가능 시간 / 지역 / 희망금액 등"></textarea>
-      </div>
-      <div class="consent">
-        <input type="checkbox" id="agree" required> <label for="agree">(필수) 개인정보 수집·이용에 동의합니다. 수집항목: 이름/연락처/사업정보, 보유기간: 상담 종료 후 3개월.</label>
-      </div>
-      <!-- 트래킹/보안 히든필드 -->
-      <input type="hidden" name="utm_source" id="utm_source">
-      <input type="hidden" name="utm_medium" id="utm_medium">
-      <input type="hidden" name="utm_campaign" id="utm_campaign">
-      <input type="hidden" name="referrer" id="referrer">
-      <input type="hidden" name="user_agent" id="user_agent">
-      <input type="hidden" name="timestamp" id="timestamp">
-      <input type="text" name="website" id="website" style="display:none" autocomplete="off" tabindex="-1"> <!-- 허니팟: 봇 차단 -->
-      <div class="submit">
-        <button type="submit" class="btn primary">무료 상담 진행하기</button>
-        <a class="btn call" href="tel:01071363205">전화로 빠른 상담</a>
-      </div>
-      <div id="formNotice" class="full" style="display:none; padding:10px; border-radius:10px; margin-top:8px"></div>
-    </form>
-  </section>
+## 3. 코드 업로드
 
-  <!-- FAQ -->
-  <section class="faq">
-    <div class="container">
-      <h2>자주 받는 질문</h2>
-      <div class="grid-3">
-        <div class="card">
-          <div class="row">
-            <span class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="10" stroke="#1034a6" stroke-width="2"/>
-                <path d="M9.5 9a2.5 2.5 0 1 1 5 0c0 2-2.5 2-2.5 4" stroke="#1034a6" stroke-width="2" stroke-linecap="round"/>
-                <circle cx="12" cy="17" r="1.2" fill="#1034a6"/>
-              </svg>
-            </span>
-            <b>신용등급 떨어지나요?</b>
-          </div>
-          <span class="muted">아니요. 대출로 잡히지 않아 신용정보사에 등록되지 않습니다.</span>
-        </div>
+### 3.1 프로젝트 폴더에서 터미널 열기
+```bash
+# 현재 위치 확인
+pwd
+# 프로젝트 파일들 확인
+ls -la
+```
 
-        <div class="card">
-          <div class="row">
-            <span class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 18h6M10 22h4" stroke="#f0a500" stroke-width="2" stroke-linecap="round"/>
-                <path d="M8 10a4 4 0 1 1 8 0c0 2-1.5 3-2 4H10c-.5-1-2-2-2-4Z" stroke="#f0a500" stroke-width="2" fill="none"/>
-              </svg>
-            </span>
-            <b>담보/보증 필요 없나요?</b>
-          </div>
-          <span class="muted">예. 카드매출 채권 자체를 담보로 활용합니다.</span>
-        </div>
+### 3.2 Git 저장소 초기화 및 업로드
+```bash
+# 1. Git 저장소 초기화
+git init
 
-        <div class="card">
-          <div class="row">
-            <span class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="10" stroke="#0b875b" stroke-width="2"/>
-                <path d="M7 12l3 3 7-7" stroke="#0b875b" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <b>추후 은행·정책자금 이용 영향?</b>
-          </div>
-          <span class="muted">부작용이 발생하지 않습니다.</span>
-        </div>
-      </div>
-    </div>
-  </section>
+# 2. 모든 파일 스테이징
+git add .
 
-  <footer>
-    <p>상담문의: 010-7136-3205 | © 카드매출 유동화</p>
-  </footer>
+# 3. 첫 번째 커밋
+git commit -m "카드유동화 랜딩페이지 초기 업로드"
 
-  <!-- ADMIN PANEL (한 번 배포 후, 여기서 URL 저장/검증/복사까지 모두 처리) -->
-  <button id="openAdmin" class="admin-btn" aria-controls="adminModal" aria-expanded="false">관리자</button>
-  <div id="adminModal" class="admin-modal" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
-    <div class="admin-card">
-      <h3 id="adminTitle">관리자 설정</h3>
-      <div class="admin-grid">
-        <div>
-          <b>1) 웹앱 URL 저장</b>
-          <p class="note">Apps Script를 웹앱으로 배포하면 나오는 <code>https://script.google.com/macros/s/.../exec</code> 주소를 입력 후 저장하세요. 저장하면 브라우저에 보관되어 파일을 다시 수정할 필요가 없습니다.</p>
-          <input type="text" id="scriptUrlInput" placeholder="https://script.google.com/macros/s/AKfycbx.../exec" />
-          <div class="admin-actions">
-            <button id="saveScriptUrl" class="btn primary" type="button">URL 저장</button>
-            <button id="checkScriptUrl" class="btn outline" type="button">연결 테스트</button>
-            <button id="resetScriptUrl" class="btn" type="button">초기화</button>
-          </div>
-          <div id="scriptStatus" class="note"></div>
-        </div>
-        <div>
-          <b>2) 알림 이메일 저장</b>
-          <p class="note">새 상담이 접수되면 받을 이메일. 콤마로 여러 개 가능. 예: me@example.com, team@example.com</p>
-          <input type="text" id="notifyEmails" placeholder="you@example.com, team@example.com" />
-          <div class="admin-actions">
-            <button id="saveNotifyEmails" class="btn" type="button">이메일 저장</button>
-          </div>
-        </div>
-        <div>
-          <b>3) Apps Script 코드 복사</b>
-          <p class="note">아래 코드를 시트의 <b>확장 프로그램 → Apps Script</b>에 붙여넣고 <b>배포 → 새 배포 → 웹 앱</b>으로 공개(모든 사용자)하세요.<br><b>시트 설정이 없어도 메일·문자가 동작</b>합니다. 시트 기록을 원하면 코드 상단의 <code>SHEET_ID</code>만 넣어주세요.<br>SMS는 <b>스크립트 속성</b>에 <code>TWILIO_SID</code>, <code>TWILIO_TOKEN</code>, <code>TWILIO_FROM</code>을 한 번만 저장하면 <b>010-7136-3205</b>로 자동 전송됩니다.</p>
-          <textarea id="gasCode" readonly>// === 설정 (시트 없어도 메일/SMS 발송) ===
-const DEFAULT_TO = 'yumicheon995@gmail.com';   // 수신 메일(기본)
-const OWNER_PHONE = '+821071363205';           // SMS 수신 번호(고정)
-const SHEET_ID = '';                           // (옵션) 시트 ID. 비워두면 기록 생략
-const SHEET_NAME = '시트1';
+# 4. 메인 브랜치 설정
+git branch -M main
 
-function getSheet(){
-  if(!SHEET_ID) return null;
-  try{
-    const ss = SpreadsheetApp.openById(SHEET_ID);
-    return ss.getSheetByName(SHEET_NAME) || ss.getActiveSheet();
-  }catch(e){ return null; }
-}
-function safeAppend(row){
-  try{ const sh = getSheet(); if(sh) sh.appendRow(row); }catch(e){}
-}
+# 5. GitHub 저장소 연결 (your-username을 본인 GitHub 아이디로 변경)
+git remote add origin https://github.com/your-username/card-liquidation-landing.git
 
-function toE164KR(num){ // 010-1234-5678 -> +821012345678
-  const d = (num||'').replace(/[^0-9]/g,'');
-  if(!d) return '';
-  return d.startsWith('0') ? '+82'+d.slice(1) : (d.startsWith('82')? '+'+d : '+'+d);
-}
+# 6. GitHub에 업로드
+git push -u origin main
+```
 
-function sendSmsTwilio(text){
-  // 스크립트 속성에 TWILIO_SID, TWILIO_TOKEN, TWILIO_FROM 저장 시 자동 발송
-  const props = PropertiesService.getScriptProperties();
-  const SID   = props.getProperty('TWILIO_SID');
-  const TOKEN = props.getProperty('TWILIO_TOKEN');
-  const FROM  = props.getProperty('TWILIO_FROM');
-  if(!SID || !TOKEN || !FROM) return; // 키 없으면 조용히 스킵
-  const url = 'https://api.twilio.com/2010-04-01/Accounts/'+SID+'/Messages.json';
-  const payload = {
-    To: OWNER_PHONE.startsWith('+')? OWNER_PHONE : toE164KR(OWNER_PHONE),
-    Body: text
-  };
-  // FROM이 Messaging Service SID(MG...)면 해당 필드 사용, 아니면 전화번호로 From 사용
-  if(/^MG[a-zA-Z0-9]{24,}$/.test(FROM)) {
-    payload.MessagingServiceSid = FROM;
-  } else {
-    payload.From = FROM; // 예: +15005550006 (Twilio 발신번호)
-  }
-  const options = { method:'post', payload, muteHttpExceptions:true, headers:{ Authorization:'Basic '+Utilities.base64Encode(SID+':'+TOKEN) } };
-  UrlFetchApp.fetch(url, options);
-}
+### 3.3 HTTPS vs SSH 연결
+```bash
+# HTTPS (토큰 인증 필요)
+git remote add origin https://github.com/your-username/card-liquidation-landing.git
 
-function doPost(e){
-  const p = e.parameter || {};
-  const when = new Date();
+# SSH (SSH 키 설정 후)
+git remote add origin git@github.com:your-username/card-liquidation-landing.git
+```
 
-  // (옵션) 시트 기록 — 설정되어 있지 않으면 자동 생략
-  safeAppend([ when, p.name||'', p.phone||'', p.period||'', p.sales||'', p.memo||'', p.utm_source||'', p.utm_medium||'', p.utm_campaign||'', p.referrer||'', p.user_agent||'', p.page_url||'' ]);
+---
 
-  // 이메일 알림 (항상 시도)
-  const to = (p.notify || DEFAULT_TO).trim();
-  const subject = `새 상담 신청: ${p.name||''} / ${p.phone||''}`;
-  const html = `<h3>새 상담 신청</h3>
-      <table border=0 cellpadding=6>
-        <tr><td><b>이름</b></td><td>${p.name||''}</td></tr>
-        <tr><td><b>전화</b></td><td>${p.phone||''}</td></tr>
-        <tr><td><b>사업 기간</b></td><td>${p.period||''}</td></tr>
-        <tr><td><b>최근 3개월 매출</b></td><td>${p.sales||''}</td></tr>
-        <tr><td><b>메모</b></td><td>${(p.memo||'').replace(/
-/g,'<br>')}</td></tr>
-        <tr><td><b>페이지</b></td><td>${p.page_url||''}</td></tr>
-        <tr><td><b>Referrer</b></td><td>${p.referrer||''}</td></tr>
-        <tr><td><b>UA</b></td><td>${p.user_agent||''}</td></tr>
-      </table>`;
-  try{ if(to) MailApp.sendEmail({ to, subject, htmlBody: html }); }catch(err){}
+## 4. Vercel 배포
 
-  // SMS 알림 (키가 있으면 자동 발송)
-  const sms = `[새 상담]
-이름: ${p.name||''}
-전화: ${p.phone||''}
-기간: ${p.period||''}
-매출: ${p.sales||''}`;
-  try{ sendSmsTwilio(sms); }catch(err){}
+### 4.1 Vercel 회원가입
+1. [vercel.com](https://vercel.com) 접속
+2. **"Sign up"** 클릭
+3. **"Continue with GitHub"** 선택
 
-  return ContentService.createTextOutput('OK');
-}
+### 4.2 프로젝트 배포
+1. Vercel 대시보드에서 **"New Project"** 클릭
+2. GitHub 저장소에서 **card-liquidation-landing** 선택
+3. **"Import"** 클릭
+4. 프로젝트 설정 확인:
+   ```
+   Project Name: card-liquidation-landing
+   Framework Preset: Next.js
+   Root Directory: ./
+   Build Command: npm run build
+   Output Directory: .next
+   ```
+5. **"Deploy"** 클릭
 
-function doGet(){ return ContentService.createTextOutput('READY'); }
-function testMail(){ MailApp.sendEmail(DEFAULT_TO, '테스트', '메일 전송 OK'); }
-</textarea>
-          <div class="admin-actions">
-            <button id="copyGAS" class="btn" type="button">코드 복사</button>
-          </div>
-        </div>
-        <div>
-          <b>3) 추천 시트 컬럼</b>
-          <p class="note"><code>timestamp | name | phone | period | sales | memo | utm_source | utm_medium | utm_campaign | referrer | user_agent | page_url</code></p>
-        </div>
-      </div>
-      <div class="admin-actions" style="justify-content:flex-end">
-        <button id="closeAdmin" class="btn" type="button">닫기</button>
-      </div>
-    </div>
-  </div>
+### 4.3 배포 완료
+- 배포 완료 후 **`https://your-project.vercel.app`** URL 생성
+- 이 URL로 사이트 접속 가능
 
-  <script>
-    // 0) 스크립트 URL 로딩/저장 (배포 후 파일 수정 없이 현장 설정 가능)
-    const DEFAULT_NOTIFY = "yumicheon995@gmail.com";
-    let SCRIPT_URL = localStorage.getItem('script_url') || "https://script.google.com/macros/s/AKfycbyWlhHzZ2jjxUolLfl0nQ9f55c1ms2mU06ESQ7G9F2l7YMRYFUVb4iVS3kPji3FrLfA/exec"; // 기본값
+---
 
-    // 1) 트래킹 메타 채우기
-    const params = new URLSearchParams(location.search);
-    const setVal = (id,v)=>{const el=document.getElementById(id); if(el) el.value=v||"";};
-    setVal('utm_source', params.get('utm_source'));
-    setVal('utm_medium', params.get('utm_medium'));
-    setVal('utm_campaign', params.get('utm_campaign'));
-    setVal('referrer', document.referrer);
-    setVal('user_agent', navigator.userAgent);
-    setVal('timestamp', new Date().toISOString());
+## 5. 환경 변수 설정
 
-    // 2) 관리자 패널 토글
-    const openBtn = document.getElementById('openAdmin');
-    const modal = document.getElementById('adminModal');
-    const closeBtn = document.getElementById('closeAdmin');
-    const input = document.getElementById('scriptUrlInput');
-    const statusBox = document.getElementById('scriptStatus');
-    const banner = document.getElementById('adminBanner');
-    const notifyInput = document.getElementById('notifyEmails');
+### 5.1 Vercel에서 환경 변수 추가
+1. Vercel 프로젝트 > **Settings** > **Environment Variables**
+2. 다음 변수들 추가:
 
-    function toggleModal(show){ modal.style.display = show ? 'flex' : 'none'; openBtn.setAttribute('aria-expanded', show); }
-    openBtn.addEventListener('click', ()=> toggleModal(true));
-    closeBtn.addEventListener('click', ()=> toggleModal(false));
-    modal.addEventListener('click', (e)=>{ if(e.target === modal) toggleModal(false); });
+```env
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-password
+ADMIN_EMAIL=admin@yourcompany.com
+```
 
-    // 초기 입력값 및 배너 표시
-    input.value = SCRIPT_URL;
-    if(notifyInput) notifyInput.value = localStorage.getItem('notify_emails') || DEFAULT_NOTIFY;
-    if(!/\/exec$/.test(SCRIPT_URL) || SCRIPT_URL.includes('YOUR_DEPLOY_ID')) banner.style.display='block';
+### 5.2 Gmail 앱 비밀번호 생성
+1. Gmail 계정 > 보안 설정
+2. **2단계 인증** 활성화
+3. **앱 비밀번호** 생성
+4. 생성된 16자리 비밀번호를 `SMTP_PASS`에 사용
 
-    // 3) URL 저장/검증/초기화/코드복사
-    document.getElementById('saveScriptUrl').addEventListener('click', ()=>{
-      const url = (input.value||'').trim();
-      if(!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(url)){
-        statusBox.textContent = '형식이 올바르지 않습니다. 예: https://script.google.com/macros/s/AKfycbx.../exec';
-        statusBox.style.color = '#a40000';
-        return;
-      }
-      localStorage.setItem('script_url', url);
-      SCRIPT_URL = url;
-      statusBox.textContent = '저장 완료! 이제 폼 제출이 시트로 전송됩니다.';
-      statusBox.style.color = '#0b875b';
-      banner.style.display='none';
-    });
+---
 
-    const saveNotifyBtn = document.getElementById('saveNotifyEmails');
-    if(saveNotifyBtn){
-      saveNotifyBtn.addEventListener('click', ()=>{
-        localStorage.setItem('notify_emails', (notifyInput.value||DEFAULT_NOTIFY).trim());
-        statusBox.textContent = '알림 이메일 저장 완료! 콤마로 여러 개 가능.';
-        statusBox.style.color = '#0b875b';
-      });
-    }
+## 6. 커스텀 도메인 설정
 
-    document.getElementById('checkScriptUrl').addEventListener('click', async ()=>{
-      statusBox.textContent = '연결 확인 중…';
-      statusBox.style.color = '#41566e';
-      try{
-        const r = await fetch(SCRIPT_URL + '?_=' + Date.now(), { method:'GET' });
-        const t = await r.text();
-        if(t && t.toUpperCase().includes('READY')){
-          statusBox.textContent = '연결 정상(READY)! 폼 제출 시 시트로 기록됩니다.';
-          statusBox.style.color = '#0b875b';
-        } else {
-          statusBox.textContent = '응답은 받았지만 READY가 보이지 않아요. doGet()을 포함했는지 확인하세요.';
-          statusBox.style.color = '#a47f00';
-        }
-      }catch(err){
-        statusBox.textContent = '연결 실패. URL과 배포 권한(모든 사용자)을 확인하세요.';
-        statusBox.style.color = '#a40000';
-      }
-    });
+### 6.1 도메인 연결
+1. Vercel 프로젝트 > **Settings** > **Domains**
+2. **Add Domain** 클릭
+3. 도메인 입력 (예: `cardliquidation.co.kr`)
+4. DNS 설정 안내에 따라 네임서버 설정
 
-    document.getElementById('resetScriptUrl').addEventListener('click', ()=>{
-      localStorage.removeItem('script_url');
-      location.reload();
-    });
+### 6.2 DNS 설정 예시
+```
+Type: CNAME
+Name: @
+Value: cname.vercel-dns.com
 
-    document.getElementById('copyGAS').addEventListener('click', ()=>{
-      const ta = document.getElementById('gasCode');
-      ta.select(); document.execCommand('copy');
-      statusBox.textContent = 'Apps Script 코드가 복사되었습니다! 시트에서 붙여넣고 웹앱으로 배포하세요.';
-      statusBox.style.color = '#0b875b';
-    });
+Type: CNAME  
+Name: www
+Value: cname.vercel-dns.com
+```
 
-    // 4) 제출 핸들러
-    const form = document.getElementById('leadForm');
-    const notice = document.getElementById('formNotice');
-    form.addEventListener('submit', async (e)=>{
-      e.preventDefault();
+---
 
-      // 허니팟 검사(스팸 차단)
-      if(document.getElementById('website').value){
-        notice.style.display='block';
-        notice.style.background='#eef7f2';
-        notice.style.border='1px solid #bfe7d2';
-        notice.style.color='#0b875b';
-        notice.textContent='접수 완료! 담당자가 곧 연락드립니다.';
-        form.reset();
-        return;
-      }
+## 7. 문제 해결
 
-      notice.style.display='block';
-      notice.style.background='#eef7f2';
-      notice.style.border='1px solid #bfe7d2';
-      notice.style.color='#0b875b';
-      notice.textContent='접수 중입니다…';
-      try{
-        const fd = new FormData(form);
-        fd.append('notify', localStorage.getItem('notify_emails') || DEFAULT_NOTIFY);
-        fd.append('page_url', location.href);
-        await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:fd});
-        notice.textContent='접수 완료! 담당자가 곧 연락드립니다.';
-        form.reset();
-      }catch(err){
-        notice.style.background='#ffecec';
-        notice.style.border='1px solid #ffb3b3';
-        notice.style.color='#a40000';
-        notice.textContent='제출 오류가 발생했습니다. 전화 상담(010-7136-3205)으로 도와드릴게요.';
-      }
-    });
-  </script>
-</body>
-</html>
+### 7.1 일반적인 오류들
+
+**🔴 인증 오류**
+```bash
+# Personal Access Token 사용
+# GitHub > Settings > Developer settings > Personal access tokens
+# 생성 후 비밀번호 대신 토큰 사용
+```
+
+**🔴 Git 초기화 오류**
+```bash
+# 기존 .git 폴더가 있는 경우
+rm -rf .git
+git init
+```
+
+**🔴 빌드 오류**
+```bash
+# 의존성 설치 확인
+npm install
+npm run build
+```
+
+### 7.2 유용한 Git 명령어
+
+```bash
+# 현재 상태 확인
+git status
+
+# 변경사항 확인
+git diff
+
+# 커밋 히스토리 확인
+git log --oneline
+
+# 원격 저장소 확인
+git remote -v
+
+# 브랜치 확인
+git branch -a
+```
+
+### 7.3 코드 업데이트 방법
+
+```bash
+# 1. 코드 수정 후
+git add .
+git commit -m "업데이트 내용 설명"
+git push
+
+# 2. 자동으로 Vercel에서 재배포됨
+```
+
+---
+
+## 📞 지원
+
+문제가 발생하면:
+1. **GitHub Issues** 생성
+2. **Vercel 로그** 확인 (Functions 탭)
+3. **브라우저 개발자 도구** 콘솔 확인
+
+---
+
+## ✅ 완료 체크리스트
+
+- [ ] GitHub 저장소 생성
+- [ ] Git 초기 설정 완료
+- [ ] 코드 업로드 완료
+- [ ] Vercel 계정 생성
+- [ ] 프로젝트 배포 완료
+- [ ] 환경 변수 설정
+- [ ] 이메일 기능 테스트
+- [ ] 모바일 반응형 확인
+- [ ] 커스텀 도메인 설정 (선택)
+
+**🎉 축하합니다! 카드유동화 랜딩 페이지가 성공적으로 배포되었습니다!**
