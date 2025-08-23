@@ -1,142 +1,244 @@
-{
-    "name": "card-liquidation-consultation",
-    "version": "1.0.0",
-    "description": "카드매출 유동화 자금 전문 상담 서비스 웹사이트",
-    "keywords": ["카드유동화", "사업자금", "대출상담", "nextjs", "consultation"],
-    "author": "Card Liquidation Consultation Service",
-    "homepage": "https://github.com/yourusername/card-liquidation-consultation",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/yourusername/card-liquidation-consultation.git"
-    },
-    "bugs": {
-        "url": "https://github.com/yourusername/card-liquidation-consultation/issues"
-    },
-    "private": false,
-    "scripts": {
-        "dev": "next dev --turbopack",
-        "build": "next build",
-        "start": "next start",
-        "lint": "next lint",
-        "lint:fix": "next lint --fix",
-        "type-check": "tsc --noEmit",
-        "format": "prettier --write .",
-        "format:check": "prettier --check .",
-        "analyze": "ANALYZE=true next build",
-        "export": "next build && next export"
-    },
-    "dependencies": {
-        "@babel/parser": "^7.28.0",
-        "@headlessui/react": "^2.2.7",
-        "@heroicons/react": "^2.2.0",
-        "@hookform/resolvers": "^5.1.1",
-        "@number-flow/react": "^0.5.10",
-        "@radix-ui/react-accordion": "^1.2.11",
-        "@radix-ui/react-alert-dialog": "^1.1.14",
-        "@radix-ui/react-aspect-ratio": "^1.1.7",
-        "@radix-ui/react-avatar": "^1.1.10",
-        "@radix-ui/react-checkbox": "^1.3.2",
-        "@radix-ui/react-collapsible": "^1.1.11",
-        "@radix-ui/react-context-menu": "^2.2.15",
-        "@radix-ui/react-dialog": "^1.1.14",
-        "@radix-ui/react-dropdown-menu": "^2.1.15",
-        "@radix-ui/react-hover-card": "^1.1.14",
-        "@radix-ui/react-label": "^2.1.7",
-        "@radix-ui/react-menubar": "^1.1.15",
-        "@radix-ui/react-navigation-menu": "^1.2.13",
-        "@radix-ui/react-popover": "^1.1.14",
-        "@radix-ui/react-progress": "^1.1.7",
-        "@radix-ui/react-radio-group": "^1.3.7",
-        "@radix-ui/react-scroll-area": "^1.2.9",
-        "@radix-ui/react-select": "^2.2.5",
-        "@radix-ui/react-separator": "^1.1.7",
-        "@radix-ui/react-slider": "^1.3.5",
-        "@radix-ui/react-slot": "^1.2.3",
-        "@radix-ui/react-switch": "^1.2.5",
-        "@radix-ui/react-tabs": "^1.1.12",
-        "@radix-ui/react-toggle": "^1.1.9",
-        "@radix-ui/react-toggle-group": "^1.1.10",
-        "@radix-ui/react-tooltip": "^1.2.7",
-        "@react-three/drei": "^10.4.4",
-        "@react-three/fiber": "^9.0.0-alpha.8",
-        "@tabler/icons-react": "^3.34.1",
-        "@tailwindcss/typography": "^0.5.16",
-        "@tsparticles/engine": "^3.8.1",
-        "@tsparticles/react": "^3.0.0",
-        "@tsparticles/slim": "^3.8.1",
-        "@types/nodemailer": "^7.0.1",
-        "class-variance-authority": "^0.7.1",
-        "clsx": "^2.1.1",
-        "cmdk": "^1.1.1",
-        "cobe": "^0.6.4",
-        "date-fns": "^4.1.0",
-        "dotted-map": "^2.2.3",
-        "embla-carousel-auto-scroll": "^8.6.0",
-        "embla-carousel-autoplay": "^8.6.0",
-        "embla-carousel-react": "^8.6.0",
-        "estree-walker": "2.0.2",
-        "framer-motion": "^12.23.12",
-        "input-otp": "^1.4.2",
-        "lucide-react": "^0.536.0",
-        "mini-svg-data-uri": "^1.4.4",
-        "motion": "^12.23.12",
-        "motion-dom": "^12.23.12",
-        "next": "15.3.5",
-        "next-themes": "^0.4.6",
-        "nodemailer": "^7.0.5",
-        "qss": "^3.0.0",
-        "react": "^19.0.0",
-        "react-day-picker": "^9.8.0",
-        "react-dom": "^19.0.0",
-        "react-dropzone": "^14.3.8",
-        "react-fast-marquee": "^1.6.5",
-        "react-hook-form": "^7.60.0",
-        "react-icons": "^5.5.0",
-        "react-intersection-observer": "^9.16.0",
-        "react-resizable-panels": "^3.0.3",
-        "react-responsive-masonry": "^2.7.1",
-        "react-rough-notation": "^1.0.5",
-        "react-syntax-highlighter": "^15.6.1",
-        "react-wrap-balancer": "^1.1.1",
-        "recharts": "^3.0.2",
-        "simplex-noise": "^4.0.3",
-        "sonner": "^2.0.6",
-        "swiper": "^11.2.10",
-        "tailwind-merge": "^3.3.1",
-        "tailwindcss-animate": "^1.0.7",
-        "three": "^0.178.0",
-        "three-globe": "^2.43.0",
-        "vaul": "^1.1.2",
-        "zod": "^3.25.74"
-    },
-    "devDependencies": {
-        "@eslint/eslintrc": "^3.3.1",
-        "@tailwindcss/postcss": "^4",
-        "@types/node": "^20",
-        "@types/react": "^19",
-        "@types/react-dom": "^19",
-        "@types/react-syntax-highlighter": "^15.5.13",
-        "@types/three": "^0.178.0",
-        "eslint": "^9.32.0",
-        "eslint-config-next": "^15.4.5",
-        "tailwindcss": "^4",
-        "tw-animate-css": "^1.3.6",
-        "typescript": "^5"
-    },
-    "engines": {
-        "node": ">=18.0.0",
-        "npm": ">=8.0.0"
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    }
+export const dynamic = "force-dynamic";
+export const revalidate = false;
+
+import React, { useState } from "react";
+
+export default function LandingPage() {
+  const tel = "010-7136-3205";
+  const telHref = "tel:" + tel.replaceAll("-", "");
+  const [pending, setPending] = useState(false);
+  const [status, setStatus] = useState<null | "ok" | "err">(null);
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setPending(true);
+    setStatus(null);
+    setTimeout(() => {
+      setPending(false);
+      setStatus("ok");
+      (e.target as HTMLFormElement).reset();
+    }, 700);
+  }
+
+  return (
+    <main className="min-h-screen bg-slate-50 text-slate-800">
+      {/* Header */}
+      <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-100">
+        <div className="mx-auto max-w-6xl h-14 px-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 rounded-xl bg-gradient-to-br from-indigo-500 to-fuchsia-500" />
+            <span className="font-bold">카드유동화</span>
+          </div>
+          <nav className="flex items-center gap-6 text-sm">
+            <a href="#benefits" className="hover:text-indigo-600">혜택</a>
+            <a href="#process" className="hover:text-indigo-600">진행과정</a>
+            <a href="#form" className="px-3 py-1.5 rounded-lg bg-slate-900 text-white">상담신청</a>
+          </nav>
+        </div>
+      </header>
+
+      {/* Hero */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-14 md:py-20 text-center">
+          <h1 className="text-3xl md:text-[40px] font-extrabold leading-tight">
+            카드 매출만 확인되면 <span className="text-indigo-600">최대 5억원까지 지원</span>
+          </h1>
+          <p className="mt-4 text-slate-600 max-w-2xl mx-auto">
+            사업자 대출이 안되시나요? <br />
+            공상사 대환도 무방하고 <br />
+            당장 필요한 운전자금 역여사대출자금
+          </p>
+
+          <ul className="mt-6 grid gap-2 max-w-xl mx-auto text-left text-[15px]">
+            {[
+              "최근 3개월 카드 매출만 확인",
+              "무서류 · 비대면 심사 지원",
+              "중도상환수수료 없음",
+              "연체 · 부채 많아도 상담 가능",
+              "법인 · 개인사업자 모두 가능",
+              "빠른 승인, 당일 자금 집행 가능",
+            ].map((t, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1 inline-flex w-5 h-5 shrink-0 rounded-full bg-indigo-100 text-indigo-600 items-center justify-center">✓</span>
+                <span>{t}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+            <a href={telHref} className="px-5 py-3 rounded-xl bg-rose-500 hover:bg-rose-600 text-white font-semibold shadow-sm">
+              즉시 무료상담 ({tel})
+            </a>
+            <a href="#form" className="px-5 py-3 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-900 font-semibold shadow-sm">
+              온라인 간편상담
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* What is section */}
+      <section className="mx-auto max-w-6xl px-4 py-10">
+        <h2 className="text-center text-xl font-bold mb-2">유동화 자금이란?</h2>
+        <p className="text-center text-slate-600 mb-8">
+          카드매출이 발생하는 사업자를 대상으로 미래 매출채권을 현금화하여
+          필요한 자금을 조달하는 금융 서비스입니다.
+        </p>
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            ["빠른 대출", "카드매출만 확인되면 신속한 승인"],
+            ["정 대출", "금리 부담 최소화 · 유연한 상환"],
+            ["담보 대출", "부동산, 동산 담보 추가 가능"],
+          ].map(([title, desc], i) => (
+            <div key={i} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-indigo-50 mb-3" />
+              <h3 className="font-semibold">{title}</h3>
+              <p className="mt-2 text-sm text-slate-600 whitespace-pre-line">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section id="benefits" className="mx-auto max-w-6xl px-4 pb-2">
+        <h2 className="text-center text-xl font-bold mb-6">유동화 자금 혜택</h2>
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {[
+            ["대출금리", "연 5%~8% 수준 합리적 금리"],
+            ["한도", "최대 5억원까지 자금 지원"],
+            ["서류", "간편 제출 · 무서류 가능"],
+            ["승인", "빠른 심사 및 당일 승인"],
+            ["보안", "개인 및 기업 정보 철저 보안"],
+            ["상환", "중도상환 수수료 無"],
+          ].map(([title, desc], i) => (
+            <div key={i} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+              <div className="w-9 h-9 rounded-lg bg-emerald-50 mb-3" />
+              <div className="font-semibold">{title}</div>
+              <div className="text-sm text-slate-600 mt-1">{desc}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Simple 3-up section */}
+      <section className="mx-auto max-w-6xl px-4 py-10">
+        <h2 className="text-center text-xl font-bold mb-6">까다롭지 않은 자금조달</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            ["신용등급 무관", "신용등급 낮아도 가능"],
+            ["기업 신용", "법인 · 개인사업자 가능"],
+            ["단순 심사", "최근 매출 기준 한도 산정"],
+          ].map(([title, desc], i) => (
+            <div key={i} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-blue-50 mb-3" />
+              <div className="font-semibold">{title}</div>
+              <div className="text-sm text-slate-600 mt-1">{desc}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Process */}
+      <section id="process" className="mx-auto max-w-6xl px-4 pb-12">
+        <h2 className="text-center text-xl font-bold mb-6">카드 매출 기반 유동화 진행과정</h2>
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {[
+            "상담 신청", "서류 접수", "사전 심사", "상세 상담", "조건 협의", "자금 실행"
+          ].map((step, i) => (
+            <div key={i} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm text-center">
+              <div className="mx-auto w-10 h-10 rounded-xl bg-violet-50 mb-3" />
+              <div className="font-semibold">{step}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Comparison table */}
+      <section className="mx-auto max-w-6xl px-4 pb-14">
+        <h2 className="text-center text-xl font-bold mb-6">유동화 자금 vs 일반대출 비교</h2>
+        <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <table className="w-full text-sm">
+            <thead className="bg-slate-50">
+              <tr>
+                <th className="p-3 text-left">비교항목</th>
+                <th className="p-3 text-left text-emerald-700">유동화 자금</th>
+                <th className="p-3 text-left text-rose-700">일반대출</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["대출한도", "매출 기준 최대 5억원", "담보/신용 의존"],
+                ["심사속도", "빠른 승인, 당일 집행", "복잡 · 지연"],
+                ["서류", "간편 제출 · 무서류 가능", "다수 서류 필요"],
+                ["중도상환수수료", "없음", "있음"],
+                ["적용대상", "개인 · 법인사업자 모두 가능", "조건 제한"],
+              ].map((row, i) => (
+                <tr key={i} className="border-t">
+                  {row.map((c, j) => (
+                    <td key={j} className="p-3">{c}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* CTA band */}
+      <section className="bg-gradient-to-r from-indigo-600 via-blue-500 to-fuchsia-500 text-white">
+        <div className="mx-auto max-w-6xl px-4 py-12 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold">현금자금 확보가 어려우신가요? 포기하지 마세요</h2>
+          <p className="mt-2 text-white/90">무료 상담 신청하기</p>
+        </div>
+      </section>
+
+      {/* Form */}
+      <section id="form" className="mx-auto max-w-4xl px-4 py-12">
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 className="text-lg font-semibold">무료 상담 신청하기</h3>
+          <form onSubmit={onSubmit} className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="text-sm text-slate-600">기본 인적 사항</label>
+              <input name="name" placeholder="이름" required className="mt-1 w-full rounded-xl border px-3 py-2" />
+            </div>
+            <div>
+              <label className="text-sm text-slate-600">연락처</label>
+              <input name="phone" inputMode="tel" placeholder="010-1234-5678" required className="mt-1 w-full rounded-xl border px-3 py-2" />
+            </div>
+            <div>
+              <label className="text-sm text-slate-600">사업 정보</label>
+              <input name="business" placeholder="업종 / 사업자" className="mt-1 w-full rounded-xl border px-3 py-2" />
+            </div>
+            <div>
+              <label className="text-sm text-slate-600">월 매출</label>
+              <input name="sales" placeholder="월 매출액" className="mt-1 w-full rounded-xl border px-3 py-2" />
+            </div>
+            <div className="md:col-span-2">
+              <label className="text-sm text-slate-600">기타 메모</label>
+              <textarea name="note" placeholder="추가 요청사항" rows={3} className="mt-1 w-full rounded-xl border px-3 py-2" />
+            </div>
+            <button disabled={pending} className="md:col-span-2 h-12 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-semibold">
+              {pending ? "전송 중…" : "무료상담신청하기"}
+            </button>
+            {status === "ok" && (
+              <p className="md:col-span-2 text-emerald-600 text-sm">신청이 접수되었습니다. 곧 연락드리겠습니다.</p>
+            )}
+            {status === "err" && (
+              <p className="md:col-span-2 text-rose-600 text-sm">전송 오류가 발생했습니다. 잠시 후 다시 시도해주세요.</p>
+            )}
+          </form>
+          <div className="mt-6 text-sm text-slate-600">
+            급한 상담은 <a className="text-indigo-600 underline" href={telHref}>{tel}</a> 로 바로 전화 주세요.
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-slate-900 text-slate-300">
+        <div className="mx-auto max-w-6xl px-4 py-10">
+          <div className="font-semibold">카드유동화 전문상담 · {tel}</div>
+          <div className="text-sm mt-2 opacity-80">© {new Date().getFullYear()} 카드유동화. All rights reserved.</div>
+        </div>
+      </footer>
+    </main>
+  );
 }
