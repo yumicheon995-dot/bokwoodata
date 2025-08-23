@@ -1,34 +1,131 @@
-<!doctype html>
-<html lang="ko">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>카드 매출 유동화 | 중도상환수수료 0원 상담</title>
+"use client";
 
-  <!-- 카톡 썸네일(OG 태그) -->
-  <meta property="og:title" content="카드 매출 유동화 | 중도상환수수료 0원 상담" />
-  <meta property="og:description" content="하루만에 가능성 진단. 신용등급 부담 없이 유동화 상담 받으세요. 010-7136-3205" />
-  <meta property="og:image" content="https://yumicheon995-dot.github.io/bokwoodata/thumbnail_1200x630.jpg" />
-  <meta property="og:url" content="https://yumicheon995-dot.github.io/bokwoodata/" />
-  <meta property="og:type" content="website" />
-  <meta name="description" content="카드 매출 기반 유동화 상담. 중도상환수수료 없음. 010-7136-3205" />
-  <!-- 트위터 카드(옵션) -->
-  <meta name="twitter:card" content="summary_large_image" />
-</head>
-<body style="font-family: system-ui, -apple-system, Arial; line-height:1.6; margin:0">
-  <header style="padding:48px 20px; background:#d50000; color:#fff; text-align:center">
-    <h1 style="margin:0 0 12px">카드 매출 유동화</h1>
-    <p style="margin:0">중도상환수수료 0원 · 1:1 빠른 상담</p>
-    <p style="margin-top:12px"><a href="tel:01071363205" style="background:#ffcc00; padding:10px 16px; display:inline-block; color:#000; text-decoration:none; border-radius:6px">전화 상담 010-7136-3205</a></p>
-  </header>
-  <main style="max-width:900px; margin:32px auto; padding:0 20px">
-    <h2>왜 유동화인가?</h2>
-    <ul>
-      <li>심사 간단 · 빠른 자금 확보</li>
-      <li>중도상환수수료 없음</li>
-      <li>당일 가능성 안내</li>
-    </ul>
-    <p>상담 문의: <a href="mailto:yumicheon@gmail.com">yumicheon@gmail.com</a> / 010-7136-3205</p>
-  </main>
-</body>
-</html>
+export const dynamic = "force-dynamic";
+export const revalidate = false;
+
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Phone, Upload, Building2, FileCheck2, DollarSign, RotateCcw } from "lucide-react";
+
+export default function LandingPage() {
+  const [pending, setPending] = useState(false);
+  const [status, setStatus] = useState(null); // "ok" | "err" | "send"
+
+  // 상담 폼 상태
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [period, setPeriod] = useState("");
+  const [avg, setAvg] = useState("");
+  const [memo, setMemo] = useState("");
+
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbziZ8Hr5849o7pTRj8uHU6RCA6EgmxmeWIqkOfKxuavC5ZoTnO_JvIz3cv_fLoCSKIc/exec";
+  const RECIPIENT = "yumicheon995@gmail.com";
+
+  async function onSubmit(e) {
+    e.preventDefault();
+    setPending(true);
+    setStatus(null);
+
+    const payload = {
+      to: RECIPIENT,
+      subject: "[카드유동화] 새 상담 요청",
+      name,
+      phone,
+      period,
+      averageSales: avg,
+      memo,
+      timestamp: new Date().toISOString(),
+    };
+
+    try {
+      const res = await fetch(SCRIPT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error("bad status");
+      setStatus("send");
+    } catch (err) {
+      try {
+        const form = new URLSearchParams();
+        Object.entries(payload).forEach(([k, v]) => form.append(k, String(v ?? "")));
+        await fetch(SCRIPT_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+          body: form.toString(),
+          mode: "no-cors",
+        });
+        setStatus("send");
+      } catch {
+        setStatus("err");
+      }
+    } finally {
+      setPending(false);
+      setName("");
+      setPhone("");
+      setPeriod("");
+      setAvg("");
+      setMemo("");
+    }
+  }
+
+  return (
+    <main className="bg-white">
+      {/* Hero Section */}
+      <section className="bg-[#EAF2FF] py-16 md:py-24">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          {/* 안내 문구 */}
+          <p className="leading-relaxed text-base md:text-lg font-semibold space-y-2">
+            <span className="block text-red-600 text-base md:text-lg">사업자 대출이 막혔다구요?</span>
+            <span className="block text-blue-600 text-base md:text-lg">금융사 대출도 막혔다구요?</span>
+            <span className="block text-orange-500 text-base md:text-lg">당장 현금이 필요한데 막막하시다구요?</span>
+          </p>
+
+          {/* 보라 그라데이션 배지 */}
+          <div className="inline-flex items-center mt-6 rounded-full px-6 py-3 text-white font-bold text-lg md:text-xl shadow-lg bg-gradient-to-r from-fuchsia-500 to-violet-600">
+            법인·개인 사업자 자금 지원
+          </div>
+
+          {/* 타이틀 */}
+          <h1 className="mt-7 md:mt-9 font-extrabold leading-tight text-4xl md:text-5xl text-slate-900">
+            카드 매출만 <span className="text-rose-600">확인</span>되면<br />
+            최대 <span className="bg-gradient-to-r from-violet-600 to-indigo-500 bg-clip-text text-transparent">5억원까지</span>
+            <span className="bg-gradient-to-r from-violet-600 to-indigo-500 bg-clip-text text-transparent"> 지원</span>
+          </h1>
+
+          {/* 체크 리스트 */}
+          <ul className="mt-6 space-y-2 text-slate-800 text-base text-left max-w-xl mx-auto">
+            <li>✔ 신용등급 무관</li>
+            <li>✔ 담보 설정 불필요</li>
+            <li>✔ 신용점수 영향 없음</li>
+            <li>✔ 신용정보사 미등록 상품입니다</li>
+            <li>✔ 추후 은행거래, 정책자금 이용에 부작용이 발생하지 않습니다</li>
+            <li>✔ 최대 5억원까지 지원</li>
+            <li>✔ 개인사업자 및 법인사업자 모두 가능</li>
+            <li>✔ 사업기간 3개월 이상</li>
+          </ul>
+
+          {/* CTA 버튼들 - 깜빡임 효과 */}
+          <div className="mt-8 flex justify-center gap-4">
+            <motion.div
+              animate={{ opacity: [1, 0.4, 1] }}
+              transition={{ duration: 1, repeat: Infinity }}
+            >
+              <a href="tel:01071363205" className="rounded-lg bg-rose-600 px-6 py-3 text-white font-bold shadow block">
+                즉시 무료상담
+                <div className="text-lg font-semibold">010-7136-3205</div>
+              </a>
+            </motion.div>
+
+            <motion.div
+              animate={{ opacity: [1, 0.4, 1] }}
+              transition={{ duration: 1, repeat: Infinity, delay: 0.5 }}
+            >
+              <a href="#form" className="rounded-lg bg-slate-800 px-6 py-3 text-white font-bold shadow block">
+                온라인 간편 신청
+                <div className="text-lg font-semibold">24시간 운영</div>
+              </a>
+            </motion.div>
+          </div>
+        </div>
+      </se
