@@ -1,344 +1,117 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>신용카드 매출만 확인되면 최대 5억원까지 지원 | 카드유동화</title>
-  <meta name="description" content="신용등급 무관 · 담보설정 불필요 · 신용점수 영향 없음 · 개인/법인 가능 · 사업기간 3개월 이상. 카드 매출만 확인되면 최대 5억원까지 지원합니다. 24시간 간편 상담!" />
-  <meta name="keywords" content="카드유동화, 카드매출 유동화, 채권 유동화, 사업자 자금, 급전, 운영자금, 소상공인 대출 대안" />
-  <link rel="canonical" href="https://yumicheon995-dot.github.io/bokwoodata/" />
-
-  <!-- Open Graph (Kakao/FB/Telegram) -->
+  <meta charset="UTF-8">
+  <!-- 모바일에서도 PC처럼 비율 유지 + 확대/축소 가능 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.5, user-scalable=yes">
+  <title>카드 매출 기반 유동화</title>
+  <meta name="description" content="카드 매출 기반 유동화 상담. 중도상환수수료 없음, 빠른 승인. 010-7136-3205">
+  <meta property="og:title" content="카드 매출 기반 유동화 상담">
+  <meta property="og:description" content="빠른 승인·중도상환수수료 없음. 지금 상담 신청하세요.">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="카드유동화">
-  <meta property="og:url" content="https://yumicheon995-dot.github.io/bokwoodata/">
-  <meta property="og:title" content="신용카드 매출만 확인되면 최대 5억원까지 지원">
-  <meta property="og:description" content="신용등급 무관 · 담보설정 불필요 · 신용점수 영향 없음 · 개인/법인 가능 · 사업기간 3개월 이상">
-  <meta property="og:image" content="https://yumicheon995-dot.github.io/bokwoodata/docs/images/card-sale-funding-support.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="ko_KR">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="신용카드 매출만 확인되면 최대 5억원까지 지원">
-  <meta name="twitter:description" content="신용등급 무관 · 담보설정 불필요 · 신용점수 영향 없음">
-  <meta name="twitter:image" content="https://yumicheon995-dot.github.io/bokwoodata/docs/images/card-sale-funding-support.jpg">
-
-  <!-- 파비콘(선택: 썸네일 재사용) -->
-  <link rel="icon" href="https://yumicheon995-dot.github.io/bokwoodata/docs/images/card-sale-funding-support.jpg">
-
-  <!-- 구조화 데이터 -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "name":"카드유동화",
-    "url":"https://yumicheon995-dot.github.io/bokwoodata/",
-    "description":"신용등급 무관 · 담보설정 불필요 · 신용점수 영향 없음 · 개인/법인 가능 · 사업기간 3개월 이상. 카드 매출만 확인되면 최대 5억원까지 지원합니다."
-  }
-  </script>
-
-  <style>
-    :root{
-      --slate:#0f172a; --muted:#334155; --light:#f1f5f9; --brand:#6d28d9;
-      --rose:#e11d48; --blue:#2563eb; --orange:#ea580c; --green:#059669;
-    }
-    *{box-sizing:border-box}
-    body{margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; color:#0f172a; background:#fff}
-    .container{max-width:1100px; margin:0 auto; padding:0 16px}
-    .center{text-align:center}
-    .badge{display:inline-block; padding:12px 20px; border-radius:999px; color:#fff; background:linear-gradient(90deg,#a21caf,#4f46e5); font-weight:800}
-    h1{font-size:34px; line-height:1.25; margin:18px 0 12px}
-    h2{font-size:28px; margin:0 0 24px}
-    ul.checks{list-style:none; padding:0; margin:16px auto 0; max-width:620px; color:#0f172a}
-    ul.checks li{margin:8px 0}
-    .muted{color:#475569}
-    .hero{background:#eaf2ff; padding:60px 0}
-    .cta-wrap{display:flex; gap:12px; justify-content:center; margin:22px 0 0}
-    .btn{display:block; text-decoration:none; color:#fff; font-weight:800; border-radius:12px; padding:14px 18px; box-shadow:0 6px 18px rgba(0,0,0,.08)}
-    .btn.primary{background:#e11d48}
-    .btn.dark{background:#0f172a}
-    .btn .sub{font-size:18px; font-weight:700; margin-top:4px; opacity:.95}
-    .blink{animation:blink 1s infinite}
-    .blink2{animation:blink 1s .5s infinite}
-    @keyframes blink{0%{opacity:1}50%{opacity:.4}100%{opacity:1}}
-    .section{padding:64px 0}
-    .note{background:#f5f7ff; padding:18px 0; border-top:1px solid #e5e7eb; border-bottom:1px solid #e5e7eb}
-    /* 카드 그리드 */
-    .grid{display:grid; grid-template-columns:repeat(1,1fr); gap:18px}
-    @media(min-width:860px){ .grid{grid-template-columns:repeat(3,1fr)} }
-    .card{background:#f8fafc; border-radius:16px; box-shadow:0 6px 20px rgba(15,23,42,.08); padding:22px; text-align:left}
-    .card h3{margin:8px 0 10px; font-size:18px}
-    .hash{color:#475569; font-size:13px; line-height:1.6}
-    .benefit{background:#e6ffef; color:#065f46; font-weight:800; padding:10px 12px; border-radius:10px; display:inline-block; margin:10px 0}
-    .small{color:#475569; font-size:13px; line-height:1.6}
-    /* 프로세스 */
-    .step{background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(15,23,42,.08); padding:22px; text-align:center}
-    .icon{width:48px; height:48px; margin:0 auto 10px; color:#4f46e5}
-    /* 폼 */
-    .form{background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(15,23,42,.08); padding:24px}
-    .row{margin-bottom:14px}
-    label{display:block; font-weight:700; margin-bottom:6px}
-    input,select,textarea{width:100%; border:1px solid #cbd5e1; border-radius:10px; padding:12px; font-size:15px}
-    textarea{resize:vertical; min-height:110px}
-    .submit{width:100%; border:0; border-radius:12px; background:#e11d48; color:#fff; padding:14px 16px; font-size:17px; font-weight:900; cursor:pointer}
-    .top-call{background:#f5f7ff; padding:14px 0; text-align:center; font-weight:800}
-    .top-call .tel{font-size:24px; margin-top:6px}
-  </style>
+  <!-- 썸네일 이미지는 있으면 아래 경로 유지, 없으면 자동 무시 -->
+  <meta property="og:image" content="./assets/og-thumb.png">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container center">
-      <p class="muted" style="font-weight:800; line-height:1.7">
-        <span style="color:var(--rose); display:block; font-size:18px">사업자 대출이 막혔다구요?</span>
-        <span style="color:var(--blue); display:block; font-size:18px">금융사 대출도 막혔다구요?</span>
-        <span style="color:var(--orange); display:block; font-size:18px">당장 현금이 필요한데 막막하시다구요?</span>
-      </p>
-
-      <div class="badge" style="margin-top:14px">법인·개인 사업자 자금 지원</div>
-
-      <h1>
-        카드 매출만 <span style="color:#e11d48">확인</span>되면<br/>
-        최대 <span style="background:linear-gradient(90deg,#4f46e5,#312e81); -webkit-background-clip:text; background-clip:text; color:transparent">5억원까지</span>
-        <span style="background:linear-gradient(90deg,#4f46e5,#312e81); -webkit-background-clip:text; background-clip:text; color:transparent"> 지원</span>
-      </h1>
-
-      <ul class="checks">
-        <li>✔ 신용등급 무관</li>
-        <li>✔ 담보 설정 불필요</li>
-        <li>✔ 신용점수 영향 없음</li>
-        <li>✔ 신용정보사 미등록 상품입니다</li>
-        <li>✔ 추후 은행거래, 정책자금 이용에 부작용이 발생하지 않습니다</li>
-        <li>✔ 최대 5억원까지 지원</li>
-        <li>✔ 개인사업자 및 법인사업자 모두 가능</li>
-        <li>✔ 사업기간 3개월 이상</li>
-      </ul>
-
-      <div class="cta-wrap">
-        <a class="btn primary blink" href="tel:01071363205">즉시 무료상담
-          <div class="sub">010-7136-3205</div>
-        </a>
-        <a class="btn dark blink2" href="#form">온라인 간편 신청
-          <div class="sub">24시간 운영</div>
-        </a>
-      </div>
+  <header>
+    <div class="wrap">
+      <h1>카드 매출 기반 유동화</h1>
+      <p>현금이 필요할 때 빠르고 안전하게. 중도상환수수료 없음.</p>
+      <a class="cta-btn" href="tel:01071363205">📞 010-7136-3205 상담하기</a>
     </div>
-  </section>
+  </header>
 
-  <!-- 상단 안내 -->
-  <div class="top-call">
-    <div class="container">
-      <div>전문가 무료상담 카드대출 유동화자금</div>
-      <div class="tel">010-7136-3205</div>
-    </div>
-  </div>
-
-  <!-- 유동화자금 혜택 -->
-  <section class="section">
-    <div class="container">
-      <h2 class="center">유동화자금 혜택</h2>
-      <div class="grid">
-
-        <!-- 축산물 도소매 -->
+  <main class="wrap">
+    <section>
+      <h2>왜 우리 서비스를 선택해야 할까요?</h2>
+      <div class="usp">
         <div class="card">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3h18v6H3zM5 9v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9" stroke-width="1.5"/><path d="M8 13h8M8 17h5" stroke-width="1.5"/></svg>
-          <h3>축산물 도소매</h3>
-          <div class="hash">#업력 2년<br/>#대표 신용 700점대 낮음<br/>#기업 등급 C</div>
-          <div class="benefit">유동화자금 5천만원 확보</div>
-          <div class="small">월 카드 매출 6천만원<br/>상환기간 100일</div>
+          <h3>✅ 빠른 승인</h3>
+          <p class="muted">서류 접수 후 평균 24시간 내 승인/실행</p>
         </div>
-
-        <!-- 숙박업 -->
         <div class="card">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 7h18M6 7v10M18 7v10M3 17h18" stroke-width="1.5"/><path d="M7 12h10" stroke-width="1.5"/></svg>
-          <h3>숙박업</h3>
-          <div class="hash">#업력 8년<br/>#대표 신용 700점대 낮음<br/>#기업 등급 CC</div>
-          <div class="benefit">유동화자금 2억 확보</div>
-          <div class="small">월 카드 매출 3억원<br/>상환기간 100일</div>
+          <h3>✅ 중도상환 수수료 없음</h3>
+          <p class="muted">원하는 시점에 자유 상환으로 이자 절감</p>
         </div>
-
-        <!-- 마트 운영 -->
         <div class="card">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 6h18l-2 10H6L3 6z" stroke-width="1.5"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg>
-          <h3>마트 운영</h3>
-          <div class="hash">#업력 5년<br/>#대표 신용 600점대 낮음<br/>#기업 등급 C</div>
-          <div class="benefit">유동화자금 1.5억 확보</div>
-          <div class="small">월 카드 매출 2.7억원<br/>상환기간 100일</div>
-        </div>
-
-        <!-- 주유소 도소매 -->
-        <div class="card">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 3h8v18H5zM13 7h3l3 3v8a2 2 0 0 1-2 2h-4" stroke-width="1.5"/></svg>
-          <h3>주유소 도소매</h3>
-          <div class="hash">#업력 7년<br/>#대표 신용 500점대 낮음<br/>#기업 등급 C</div>
-          <div class="benefit">유동화자금 5억원 확보</div>
-          <div class="small">월 카드 매출 36억원<br/>상환기간 100일</div>
-        </div>
-
-        <!-- 음식점업 -->
-        <div class="card">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 3v8M8 3v8M6 11v10M14 3v18M18 3v18" stroke-width="1.5"/></svg>
-          <h3>음식점업</h3>
-          <div class="hash">#업력 5년<br/>#대표 신용 600점대 낮음<br/>#기업 등급 C</div>
-          <div class="benefit">유동화자금 7천만원 확보</div>
-          <div class="small">월 카드 매출 1억원<br/>상환기간 100일</div>
-        </div>
-
-        <!-- 골프 연습장 -->
-        <div class="card">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 3v12l8-4-8-4zM4 21h16" stroke-width="1.5"/></svg>
-          <h3>골프 연습장</h3>
-          <div class="hash">#업력 3년<br/>#대표 신용 700점대 낮음<br/>#기업 등급 C</div>
-          <div class="benefit">유동화자금 4.5천만원 확보</div>
-          <div class="small">월 카드 매출 4천만원<br/>상환기간 100일</div>
+          <h3>✅ 안정적인 자금</h3>
+          <p class="muted">성수기·비수기 리스크 분산, 안정 운용</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 진행 과정 -->
-  <section class="section" style="background:linear-gradient(90deg,#7c3aed,#4f46e5); color:#fff">
-    <div class="container">
-      <h2 class="center">카드대출 채권 유동화 진행과정</h2>
-      <div class="grid">
-        <div class="step">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 9h8M8 13h5M4 5h16v14H4z" stroke-width="1.5"/></svg>
-          <div class="muted" style="color:#e2e8f0">상담 진행</div>
-          <div>자금조달을 위한 유선 상담</div>
-        </div>
-        <div class="step">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16v6H4zM4 10l8 5 8-5" stroke-width="1.5"/></svg>
-          <div class="muted" style="color:#e2e8f0">자료제출</div>
-          <div>사업자등록증 및 가맹점 매출 확인 (2~3일 소요)</div>
-        </div>
-        <div class="step">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 7h18M6 7v10M18 7v10M3 17h18" stroke-width="1.5"/></svg>
-          <div class="muted" style="color:#e2e8f0">사업장 실사확인</div>
-          <div>심사 및 계약서 작성</div>
-        </div>
-        <div class="step">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 20V8l8-4 8 4v12" stroke-width="1.5"/></svg>
-          <div class="muted" style="color:#e2e8f0">신탁등록</div>
-          <div>계약 확인</div>
-        </div>
-        <div class="step">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v18M5 12h14" stroke-width="1.5"/></svg>
-          <div class="muted" style="color:#e2e8f0">자금지급</div>
-          <div>자금지급 완료</div>
-        </div>
-        <div class="step">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3" stroke-width="1.5"/></svg>
-          <div class="muted" style="color:#e2e8f0">상환</div>
-          <div>100일간 상환</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 상담 폼 -->
-  <section id="form" class="section" style="background:#f1f5f9">
-    <div class="container">
-      <h2 class="center" style="color:#e11d48">현금흐름이 어렵다고 포기하지마세요</h2>
-      <div class="form">
-        <h3 class="center" style="margin-top:0">무료로 상담 신청하기</h3>
-        <form id="consult-form">
+    <section id="apply">
+      <h2>상담 신청</h2>
+      <form id="consultForm" novalidate>
+        <div class="grid">
           <div class="row">
-            <label>이름 *</label>
-            <input type="text" name="name" required placeholder="홍길동" />
+            <div>
+              <label for="name">대표자명</label>
+              <input id="name" name="name" required placeholder="홍길동" autocomplete="name">
+            </div>
+            <div>
+              <label for="biz">상호명</label>
+              <input id="biz" name="business" required placeholder="예: 예가 인테리어" autocomplete="organization">
+            </div>
           </div>
+
           <div class="row">
-            <label>전화번호 *</label>
-            <input type="tel" name="phone" required placeholder="010-0000-0000" />
+            <div>
+              <label for="phone">연락처(휴대폰)</label>
+              <input id="phone" name="phone" inputmode="tel" placeholder="010-1234-5678" required pattern="^0\\d{1,2}-?\\d{3,4}-?\\d{4}$" autocomplete="tel">
+              <div class="hint">예: 010-7136-3205</div>
+            </div>
+            <div>
+              <label for="email">이메일</label>
+              <input id="email" name="email" type="email" required placeholder="you@example.com" autocomplete="email">
+              <div class="hint">상담 결과를 메일로도 보내드려요.</div>
+            </div>
           </div>
+
           <div class="row">
-            <label>사업 기간 *</label>
-            <select name="period" required>
-              <option value="">선택하세요</option>
-              <option value="3개월 미만">3개월 미만</option>
-              <option value="3개월 이상">3개월 이상</option>
-            </select>
+            <div>
+              <label for="sales">월 카드매출(대략)</label>
+              <select id="sales" name="sales">
+                <option value="under-20m">2천만 원 미만</option>
+                <option value="20-50m">2천만~5천만 원</option>
+                <option value="50-100m">5천만~1억</option>
+                <option value="over-100m">1억 이상</option>
+              </select>
+            </div>
+            <div>
+              <label for="need">필요 자금</label>
+              <select id="need" name="need">
+                <option value="under-30m">3천만 원 미만</option>
+                <option value="30-100m">3천만~1억</option>
+                <option value="100-300m">1억~3억</option>
+                <option value="over-300m">3억 이상</option>
+              </select>
+            </div>
           </div>
-          <div class="row">
-            <label>최근 3개월 평균매출 *</label>
-            <select name="avg" required>
-              <option value="">선택하세요</option>
-              <option value="월 1000만원 미만">월 1000만원 미만</option>
-              <option value="월 1000만원 이상">월 1000만원 이상</option>
-            </select>
+
+          <div>
+            <label for="memo">추가 내용</label>
+            <textarea id="memo" name="memo" placeholder="필요 자금 용도, 희망 실행일 등"></textarea>
           </div>
-          <div class="row">
-            <label>메모</label>
-            <textarea name="memo" placeholder="추가 요청사항을 적어주세요."></textarea>
+
+          <div class="submit">
+            <button type="submit">📤 상담 신청 보내기</button>
+            <a class="ghost" href="tel:01071363205">바로 전화 연결</a>
+            <span class="state" id="stateMsg"></span>
           </div>
-          <div class="row" style="display:flex; gap:8px; align-items:center">
-            <input type="checkbox" id="agree" required />
-            <label for="agree" style="margin:0; font-weight:400">개인정보취급방침에 동의합니다</label>
-          </div>
-          <button class="submit blink" type="submit">무료 상담 진행하기 →</button>
-          <p id="msg" class="center" style="margin:10px 0 0; font-weight:700"></p>
-        </form>
-      </div>
-    </div>
-  </section>
+        </div>
+      </form>
+      <p class="muted" style="margin-top:12px;">제출 즉시 담당자가 확인 후 <strong>010-7136-3205</strong> 또는 <strong>yumicheon@gmail.com</strong>으로 연락드립니다.</p>
+    </section>
+  </main>
 
-  <script>
-    // 구글 앱스 스크립트(폼 수신)
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbziZ8Hr5849o7pTRj8uHU6RCA6EgmxmeWIqkOfKxuavC5ZoTnO_JvIz3cv_fLoCSKIc/exec";
-    const RECIPIENT  = "yumicheon995@gmail.com";
+  <footer>
+    문의전화: <a href="tel:01071363205">010-7136-3205</a> | 이메일: <a href="mailto:yumicheon@gmail.com">yumicheon@gmail.com</a><br>
+    © 2025 카드 매출 기반 유동화. All rights reserved.
+  </footer>
 
-    const form = document.getElementById("consult-form");
-    const msg  = document.getElementById("msg");
-
-    form.addEventListener("submit", async (e)=>{
-      e.preventDefault();
-      msg.textContent = "전송중...";
-      const fd = new FormData(form);
-      const payload = {
-        to: RECIPIENT,
-        subject: "[카드유동화] 새 상담 요청",
-        name: fd.get("name"),
-        phone: fd.get("phone"),
-        period: fd.get("period"),
-        averageSales: fd.get("avg"),
-        memo: fd.get("memo") || "",
-        timestamp: new Date().toISOString()
-      };
-
-      // 1차: JSON
-      try{
-        const res = await fetch(SCRIPT_URL, {
-          method:"POST",
-          headers:{ "Content-Type":"application/json" },
-          body: JSON.stringify(payload)
-        });
-        if(!res.ok) throw new Error("bad status");
-        msg.style.color = "#059669";
-        msg.textContent = "전송 완료! 담당자가 곧 연락드립니다.";
-        form.reset();
-        return;
-      }catch(_){}
-
-      // 2차: x-www-form-urlencoded + no-cors
-      try{
-        const params = new URLSearchParams();
-        Object.entries(payload).forEach(([k,v])=>params.append(k, String(v ?? "")));
-        await fetch(SCRIPT_URL, {
-          method:"POST",
-          headers:{ "Content-Type":"application/x-www-form-urlencoded;charset=UTF-8" },
-          body: params.toString(),
-          mode:"no-cors"
-        });
-        msg.style.color = "#059669";
-        msg.textContent = "전송 완료! 담당자가 곧 연락드립니다.";
-        form.reset();
-      }catch(err){
-        msg.style.color = "#dc2626";
-        msg.textContent = "오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
-      }
-    });
-  </script>
+  <script src="./scripts/app.js"></script>
 </body>
 </html>
