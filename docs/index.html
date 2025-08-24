@@ -9,10 +9,88 @@
   <meta property="og:title" content="카드 매출 기반 유동화 상담">
   <meta property="og:description" content="빠른 승인·중도상환수수료 없음. 지금 상담 신청하세요.">
   <meta property="og:type" content="website">
-  <!-- 썸네일 이미지는 있으면 아래 경로 유지, 없으면 자동 무시 -->
-  <meta property="og:image" content="./assets/og-thumb.png">
-  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles/style.css">
+  <!-- 필요시 썸네일 절대경로 이미지 -->
+  <!-- <meta property="og:image" content="https://도메인/og-thumb.jpg"> -->
+
+  <style>
+    :root {
+      --brand-red:#d50000;
+      --brand-accent:#ffcc00;
+      --ink:#111;
+      --ink-weak:#555;
+      --bg:#fff;
+      --card:#f9f9f9;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family:'Noto Sans KR', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height:1.6; }
+    body { overflow-x:hidden; }
+    img, video { max-width:100%; height:auto; display:block; }
+
+    header {
+      background: var(--brand-red);
+      color:#fff;
+      text-align:center;
+      padding:64px 20px;
+    }
+    header h1 { font-size: clamp(28px, 4vw, 44px); margin: 0 0 12px; letter-spacing:-0.02em; }
+    header p { font-size: clamp(15px, 2.2vw, 20px); margin: 0; opacity:0.95; }
+    .cta-btn {
+      background: var(--brand-accent); color:#000; font-weight:700;
+      padding:14px 22px; border-radius:10px; display:inline-block;
+      margin-top:20px; font-size: clamp(15px, 2vw, 18px); text-decoration:none;
+      box-shadow: 0 6px 16px rgba(0,0,0,.15);
+    }
+    main { max-width: 960px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    section { margin: 48px 0; }
+    h2 { color: var(--brand-red); margin: 0 0 18px; font-size: clamp(20px, 3vw, 28px); }
+
+    .usp {
+      display: grid; gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .card {
+      background: var(--card); padding: 20px; border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.06);
+    }
+    .card h3 { margin: 0 0 8px; font-size: 18px; }
+    .muted { color: var(--ink-weak); }
+
+    /* 폼 */
+    form { background:#fff; border:1px solid #eee; border-radius:14px; padding: 22px; box-shadow: 0 8px 22px rgba(0,0,0,.06); }
+    .grid { display:grid; gap:14px; grid-template-columns:1fr; }
+    .row { display:grid; gap:14px; grid-template-columns:1fr 1fr; }
+    @media (max-width: 640px) { .row { grid-template-columns:1fr; } }
+
+    label { font-weight:700; font-size:14px; }
+    input, select, textarea {
+      width:100%; padding:12px 12px; border:1px solid #ddd; border-radius:10px; font-size:16px; background:#fff;
+    }
+    textarea { min-height: 120px; resize: vertical; }
+    .hint { font-size:12px; color:#777; margin-top:6px; }
+    .submit {
+      margin-top: 8px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+    }
+    button[type=submit] {
+      background: var(--brand-red); color:#fff; border:0; border-radius:10px;
+      padding:12px 18px; font-weight:700; cursor:pointer; font-size:16px;
+      box-shadow: 0 6px 16px rgba(213,0,0,.3);
+    }
+    .ghost {
+      background:#000; color:#fff; border-radius:10px; padding:12px 16px; text-decoration:none; font-weight:700;
+    }
+    .state { font-size:14px; }
+    .ok { color:#0a7a2d; }
+    .err { color:#b00020; }
+
+    footer {
+      background:#111; color:#fff; text-align:center; padding:28px 20px; font-size:14px;
+    }
+    footer a { color: var(--brand-accent); text-decoration:none; }
+
+    /* 확대해도 가로넘침 방지 */
+    .wrap { width:min(100%, 960px); margin-inline:auto; }
+  </style>
 </head>
 <body>
   <header>
@@ -60,7 +138,7 @@
           <div class="row">
             <div>
               <label for="phone">연락처(휴대폰)</label>
-              <input id="phone" name="phone" inputmode="tel" placeholder="010-1234-5678" required pattern="^0\\d{1,2}-?\\d{3,4}-?\\d{4}$" autocomplete="tel">
+              <input id="phone" name="phone" inputmode="tel" placeholder="010-1234-5678" required pattern="^0\d{1,2}-?\d{3,4}-?\d{4}$" autocomplete="tel">
               <div class="hint">예: 010-7136-3205</div>
             </div>
             <div>
@@ -112,6 +190,60 @@
     © 2025 카드 매출 기반 유동화. All rights reserved.
   </footer>
 
-  <script src="./scripts/app.js"></script>
+  <script>
+    // 1) Apps Script 웹앱 URL 넣기
+    const WEB_APP_URL = 'https://script.google.com/macros/s/여기에_네_웹앱_URL/exec';
+
+    // 2) 제출 처리
+    const form = document.getElementById('consultForm');
+    const stateMsg = document.getElementById('stateMsg');
+
+    function encode(data) {
+      // Apps Script용 FormData -> URLSearchParams
+      const p = new URLSearchParams();
+      Object.entries(data).forEach(([k,v]) => p.append(k, v));
+      return p;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      stateMsg.textContent = '전송 중...';
+      stateMsg.className = 'state';
+
+      // 기본 유효성 검사
+      const fd = new FormData(form);
+      const data = Object.fromEntries(fd.entries());
+      if (!data.name || !data.business || !data.phone || !data.email) {
+        stateMsg.textContent = '필수 항목을 확인해 주세요.';
+        stateMsg.className = 'state err';
+        return;
+      }
+
+      try {
+        const res = await fetch(WEB_APP_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encode({
+            ts: new Date().toISOString(),
+            ...data,
+            source: location.href
+          })
+        });
+
+        const json = await res.json().catch(() => ({}));
+        if (res.ok && (json.status === 'ok' || json.result === 'success')) {
+          stateMsg.textContent = '접수 완료! 곧 연락드릴게요.';
+          stateMsg.className = 'state ok';
+          form.reset();
+        } else {
+          throw new Error(json.error || '서버 응답 오류');
+        }
+      } catch (err) {
+        console.error(err);
+        stateMsg.textContent = '전송 실패. 잠시 후 다시 시도해 주세요.';
+        stateMsg.className = 'state err';
+      }
+    });
+  </script>
 </body>
 </html>
