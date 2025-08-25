@@ -4,20 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=3, user-scalable=yes" />
 
+  <!-- Open Graph / Twitter -->
   <meta property="og:locale" content="ko_KR" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="카드유동화" />
   <meta property="og:url" content="https://yumicheon995-dot.github.io/bokwoodata/" />
   <meta property="og:title" content="신용카드 매출만 확인되면 최대 5억원까지 지원" />
   <meta property="og:description" content="담보 없이 빠른 자금 확보 · 신용점수 영향 없음 · 24시간 접수" />
-  <meta property="og:image" content="https://yumicheon995-dot.github.io/bokwoodata/images/card-sale-funding-support.jpg?v=9" />
+  <meta property="og:image" content="https://yumicheon995-dot.github.io/bokwoodata/images/card-sale-funding-support.jpg?v=10" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="신용카드 매출만 확인되면 최대 5억원까지 지원" />
   <meta name="twitter:description" content="담보 없이 빠른 자금 확보 · 신용점수 영향 없음 · 24시간 접수" />
-  <meta name="twitter:image" content="https://yumicheon995-dot.github.io/bokwoodata/images/card-sale-funding-support.jpg?v=9" />
+  <meta name="twitter:image" content="https://yumicheon995-dot.github.io/bokwoodata/images/card-sale-funding-support.jpg?v=10" />
 
   <title>카드유동화 랜딩페이지</title>
 
@@ -27,8 +28,9 @@
       --brand-grad:linear-gradient(135deg,#6a5cff,#9b4dff);
       --cta-orange:#ff6b00;
       --cta-navy:#0b1220;
-      --bg-grad:radial-gradient(1200px 1200px at 85% 10%, rgba(134,239,172,.08), transparent 60%),
-                 linear-gradient(135deg,#ffffff 30%,#f7f8ff 60%,#f3f5ff 100%);
+      --bg-grad:
+        radial-gradient(1200px 1200px at 85% 10%, rgba(134,239,172,.08), transparent 60%),
+        linear-gradient(135deg,#ffffff 30%,#f7f8ff 60%,#f3f5ff 100%);
       --shadow:0 10px 24px rgba(2,6,23,.08);
       --panel-grad:linear-gradient(135deg,#eef2ff,#f8fafc);
       --fs-body: clamp(15px, 1.8vw, 16.5px);
@@ -40,79 +42,112 @@
     html,body{height:100%}
     body{
       margin:0;
-      word-break:keep-all;          /* ✅ 한글 임의 줄바꿈 방지 */
+      word-break:keep-all;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",Arial,sans-serif;
       color:#0f172a; line-height:1.6; background:var(--bg-grad);
       font-size:var(--fs-body);
     }
     a{text-decoration:none;color:inherit}
     .container{max-width:1100px;margin:0 auto;padding:24px 16px}
+
+    /* 헤더 */
     .header{display:flex;align-items:center;justify-content:space-between;gap:10px}
     .brand{display:flex;gap:10px;align-items:center;min-width:0}
     .brand-icon{width:28px;height:28px;border-radius:8px;background:var(--brand-grad);position:relative;box-shadow:0 6px 16px rgba(137,80,255,.35);flex:0 0 28px}
     .brand-icon::after{content:"";position:absolute;inset:7px 5px;border-radius:5px;background:#fff;opacity:.9}
-    .brand-name{font-weight:800;color:#111827;white-space:nowrap;font-size:clamp(14px,3.4vw,18px)}  /* ✅ 한줄 고정 */
+    .brand-name{font-weight:800;color:#111827;white-space:nowrap;font-size:clamp(14px,3.4vw,18px)}
     .nav{display:flex;gap:14px;align-items:center;flex-wrap:nowrap;overflow-x:auto}
-    .nav a{color:#1f2937;font-weight:700;white-space:nowrap;display:inline-block;line-height:1; font-size:clamp(13px,2.9vw,15px)} /* ✅ 링크 한줄 */
+    .nav a{color:#1f2937;font-weight:700;white-space:nowrap;display:inline-block;line-height:1; font-size:clamp(13px,2.9vw,15px)}
     .cta{padding:8px 12px;border-radius:10px;background:var(--brand-grad);color:#fff;font-weight:800;flex:0 0 auto}
-    .hero{padding:24px 16px 56px}
+
+    /* 히어로 */
+    .hero{padding:24px 16px 40px}
     .hero-body{max-width:760px;margin:0 auto;text-align:center}
     .headline{margin:14px 0 12px;line-height:1.25;letter-spacing:-.4px}
-    .headline .l1{display:block;font-size:var(--fs-h1);font-weight:900;color:#111827;white-space:nowrap} /* ✅ 한줄 */
+    .headline .l1{display:block;font-size:var(--fs-h1);font-weight:900;color:#111827;white-space:nowrap}
     .headline .l1 .blue{color:var(--primary)}
-    .headline .l2{display:block;margin-top:4px;font-size:var(--fs-h1);font-weight:900;color:#111827;white-space:nowrap} /* ✅ 한줄 */
+    .headline .l2{display:block;margin-top:4px;font-size:var(--fs-h1);font-weight:900;color:#111827;white-space:nowrap}
     @keyframes blink{0%,100%{opacity:1}50%{opacity:.55}}
     .max-orange{color:#ff6b00;animation:blink 1.1s infinite}
-    .subq{margin:14px 0 16px;color:#374151;font-size:clamp(15px,3.9vw,18px);font-weight:700}
+    .subq{margin:12px 0 14px;color:#374151;font-size:clamp(15px,3.9vw,18px);font-weight:700}
     .subq p{margin:6px 0}
-    .features{margin:18px auto 24px;color:#475569;max-width:640px;text-align:left}
+
+    .features{margin:14px auto 22px;color:#475569;max-width:640px;text-align:left}
     .feature{display:flex;gap:10px;align-items:flex-start;margin:7px 0;font-size:clamp(14px,3.6vw,15.5px)}
     .check{width:18px;height:18px;border-radius:50%;background:#eaf2ff;border:1.5px solid #93c5fd;position:relative;flex:0 0 18px;margin-top:2px}
     .check::after{content:"";position:absolute;left:4px;top:2px;width:8px;height:12px;border-right:2px solid #3b82f6;border-bottom:2px solid #3b82f6;transform:rotate(45deg)}
+
     .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
     .btn{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;padding:16px 22px;border-radius:14px;font-weight:900;color:#fff;box-shadow:var(--shadow);text-align:center;min-width:min(100%, 340px)}
     .btn.blink{animation:blink 1.2s infinite}
     .btn-primary{background:#ff6b00}
     .btn-secondary{background:#0b1220}
     .sub{font-size:12.5px;font-weight:700;margin-top:6px;opacity:.95}
-    .section{padding:44px 16px}
-    .section h2{font-size:var(--fs-h2);margin:0 0 8px;text-align:center}
-    .muted{text-align:center;color:#64748b;margin-bottom:22px}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1100px;margin:0 auto}
-    .card{background:#fff;border-radius:18px;padding:20px;border:1px solid #e5e7eb;box-shadow:0 6px 22px rgba(0,0,0,.06)}
+
+    /* 섹션 공통 */
+    .section{padding:32px 16px}
+    .section h2{font-size:var(--fs-h2);margin:0 0 10px;text-align:center}
+    .muted{text-align:center;color:#64748b;margin-bottom:18px}
+
+    /* 카드(정사각형 + 1열) */
+    .cards{display:grid;grid-template-columns:1fr;gap:16px;max-width:840px;margin:0 auto}
+    .card{
+      background:#fff;border-radius:18px;padding:18px;border:1px solid #e5e7eb;box-shadow:0 6px 22px rgba(0,0,0,.06);
+      aspect-ratio:1/1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+    }
     .avatar{width:58px;height:58px;border-radius:14px;margin:0 auto 10px;background:var(--panel-grad);display:flex;align-items:center;justify-content:center;border:1px solid #e6e9f3}
     .avatar svg{width:30px;height:30px;stroke-width:2.2;fill:none}
     .avatar.blue svg{stroke:#3b82f6}
     .avatar.purple svg{stroke:#7c3aed}
-    .card h3{margin:8px 0 8px;font-size:var(--fs-cardtitle);text-align:center}
+    .card h3{margin:8px 0 6px;font-size:var(--fs-cardtitle);text-align:center}
     .card p{margin:6px 0;color:#475569;text-align:center}
-    .banner{max-width:980px;margin:24px auto 0;background:linear-gradient(135deg,#eef2ff,#f8fafc);border-radius:16px;padding:18px 20px;text-align:center;color:#1e293b;border:1px solid #e5e7eb}
-    .banner b{letter-spacing:.2px}
-    .small{display:block;color:#0f172a;font-size:12.5px;margin-top:4px;opacity:.9}
-    .grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1100px;margin:0 auto}
-    .benefit{background:#fff;border-radius:16px;border:1px solid #e6e9f3;padding:18px;box-shadow:0 8px 22px rgba(0,0,0,.06)}
+
+    .banner{max-width:840px;margin:6px auto 0;background:linear-gradient(135deg,#eef2ff,#f8fafc);border-radius:16px;padding:14px 18px;text-align:center;color:#1e293b;border:1px solid #e5e7eb}
+
+    /* 유동화 자금 가능 업종 (정사각형 + 1열) */
+    .grid6{display:grid;grid-template-columns:1fr;gap:16px;max-width:840px;margin:0 auto}
+    .benefit{
+      background:#fff;border-radius:16px;border:1px solid #e6e9f3;padding:18px;box-shadow:0 8px 22px rgba(0,0,0,.06);
+      aspect-ratio:1/1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+    }
     .benefit .icon{width:50px;height:50px;border-radius:12px;background:var(--brand-grad);margin-bottom:10px;display:flex;align-items:center;justify-content:center}
     .benefit .icon svg{width:28px;height:28px;stroke:#fff;stroke-width:2.1;fill:none;stroke-linecap:round;stroke-linejoin:round}
-    .benefit h4{color:#1d4ed8;margin:4px 0 6px;font-size:clamp(15px,3.6vw,17px)}
+    .benefit h4{color:#1d4ed8;margin:6px 0 8px;font-size:clamp(15px,3.6vw,17px)}
     .benefit .desc{color:#64748b;font-size:clamp(12.5px,3.3vw,14px)}
-    .label{margin-top:12px;background:#dcfce7;color:#065f46;padding:8px 10px;border-radius:10px;font-weight:800;display:inline-block;font-size:clamp(12px,3.2vw,13px)}
-    .strip{background:linear-gradient(135deg,#4f46e5,#7c3aed,#3b82f6);color:#fff;padding:34px 16px}
-    .strip h2{color:#fff}
-    .strip .cards{gap:18px}
+    .label{margin-top:10px;background:#dcfce7;color:#065f46;padding:8px 10px;border-radius:10px;font-weight:800;display:inline-block;font-size:clamp(12px,3.2vw,13px)}
+    .small{display:block;color:#0f172a;font-size:12.5px;margin-top:4px;opacity:.9}
+
+    /* 까다롭지 않은 자금조달 (정사각형 + 1열) */
+    .strip{background:linear-gradient(135deg,#4f46e5,#7c3aed,#3b82f6);color:#fff;padding:24px 16px}
+    .strip h2{color:#fff;margin-bottom:12px}
+    .strip .cards{max-width:840px}
     .strip .card{background:#ffffff;border:1px solid #e5e7eb;color:#111827}
-    .grid6.process .benefit{align-items:flex-start}
-    .step{display:inline-block;background:#e0e7ff;color:#1e40af;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:800;margin-bottom:8px}
+
+    /* 진행과정(정사각형 + 1열) */
+    .grid6.process .benefit{align-items:center}
+    .step{display:inline-block;background:#e0e7ff;color:#1e40af;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:800;margin-bottom:6px}
     #process .benefit .icon{display:none}
 
-    .form-wrap{max-width:980px;margin:0 auto;background:#fff;border-radius:20px;padding:20px;border:1px solid #e5e7eb;box-shadow:0 10px 28px rgba(0,0,0,.08)}
-    .form-title{text-align:center;font-size:clamp(20px,4.4vw,24px);font-weight:900;margin:6px 0 12px}
-    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    /* 상담 폼 */
+    .form-wrap{max-width:840px;margin:0 auto;background:#fff;border-radius:20px;padding:18px;border:1px solid #e5e7eb;box-shadow:0 10px 28px rgba(0,0,0,.08)}
+    .form-title{text-align:center;font-size:clamp(20px,4.4vw,24px);font-weight:900;margin:4px 0 10px}
+    .form-grid{display:grid;grid-template-columns:1fr;gap:12px} /* ✅ 한 줄씩 */
     .input, select, textarea{border:1px solid #e5e7eb;border-radius:12px;padding:12px 12px;font-size:15px;width:100%}
     textarea{min-height:92px;resize:vertical}
+    .tel-row{display:flex;gap:8px}
+    .tel-row .input{flex:1}
+    select.input{padding-right:28px}
     .radio-row{display:flex;gap:12px;flex-wrap:wrap}
     .radio{border:1px solid #e5e7eb;border-radius:12px;padding:8px 10px}
     .agree{display:flex;gap:8px;align-items:center;margin:6px 0 4px;color:#475569;font-size:14px}
-    .submit{display:block;width:100%;margin-top:12px;background:linear-gradient(135deg,#ff9f1c,#ff6b00);color:#fff;border:none;border-radius:14px;padding:14px 16px;font-size:17px;font-weight:900;cursor:pointer}
+    .submit{display:block;width:100%;margin-top:8px;background:linear-gradient(135deg,#ff9f1c,#ff6b00);color:#fff;border:none;border-radius:14px;padding:14px 16px;font-size:17px;font-weight:900;cursor:pointer}
+
+    /* 푸터 */
+    .footer{padding:22px 0;background:#0b1220;color:#cbd5e1}
+    .footer .container{display:flex;align-items:center;gap:12px}
+    .footer .brand-icon{flex:0 0 28px}
+    .footer .phone{font-weight:900;color:#fff}
+
     .toast{position:fixed;top:12px;right:12px;z-index:9999;padding:10px 12px;border-radius:10px;color:#fff;box-shadow:0 8px 22px rgba(0,0,0,.2);display:none}
     .toast.ok{background:#059669}
     .toast.err{background:#dc2626}
@@ -120,32 +155,12 @@
     @keyframes blink{0%,100%{opacity:1}50%{opacity:.55}}
     .btn-primary.blink{animation:blink 1.2s infinite}
     .headline .max-orange{animation:blink 1.1s infinite}
-
-    /* ---------- Responsive: mobile keeps two columns ---------- */
-    @media (max-width:1024px){
-      .cards,.grid6{grid-template-columns:1fr 1fr}
-    }
-    /* 유지: 640px 이하에서도 2열 유지 */
-    @media (max-width:640px){
-      .cards,.grid6{grid-template-columns:1fr 1fr}
-      .nav{gap:10px}
-      .cta{padding:6px 10px}
-    }
-    /* 아주 작은 폭에서만 1열 */
-    @media (max-width:360px){
-      .cards,.grid6{grid-template-columns:1fr}
-    }
-    @media (max-width:420px){
-      .subq{font-size:16px}
-      .feature{font-size:14.5px}
-      .agree{font-size:13.5px}
-      .submit{font-size:16px}
-    }
   </style>
 </head>
 <body>
   <div class="toast" id="toast"></div>
 
+  <!-- 헤더 -->
   <header class="container header">
     <div class="brand">
       <div class="brand-icon" aria-hidden="true"></div>
@@ -159,6 +174,7 @@
     </nav>
   </header>
 
+  <!-- 히어로 -->
   <section class="hero" id="top">
     <div class="hero-body">
       <h1 class="headline">
@@ -190,6 +206,7 @@
     </div>
   </section>
 
+  <!-- 내 사업에 맞는 유동화자금 (정사각형 1열) -->
   <section class="section" id="service">
     <div class="container">
       <h2>내 사업에 맞는 유동화자금은 어떤게 있을까?</h2>
@@ -228,10 +245,12 @@
     </div>
   </section>
 
+  <!-- 유동화 자금 가능 업종 (정사각형 1열) -->
   <section class="section" id="benefit">
     <div class="container">
       <h2>유동화 자금 가능 업종</h2>
       <p class="muted">(카드매출이 있는 사업자 전부가능)</p>
+
       <div class="grid6">
         <div class="benefit"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg></div><h4>병원 및 약국</h4><div class="label">유동화자금 5천만원 확보</div><span class="small">월 카드 매출 6천만원<br/>상환기간 100일</span></div>
         <div class="benefit"><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 7h10a4 4 0 0 1 4 4v9"/><path d="M3 7v13"/><path d="M3 14h18"/></svg></div><h4>숙박업</h4><div class="label">유동화자금 2억 확보</div><span class="small">월 카드 매출 3억원<br/>상환기간 100일</span></div>
@@ -246,6 +265,7 @@
     </div>
   </section>
 
+  <!-- 까다롭지 않은 자금조달 (정사각형 1열) -->
   <section class="strip section">
     <div class="container">
       <h2>까다롭지않은 자금조달</h2>
@@ -257,6 +277,7 @@
     </div>
   </section>
 
+  <!-- 진행과정 (정사각형 1열) -->
   <section class="section" id="process">
     <div class="container">
       <h2>카드매출 채권 유동화 진행과정</h2>
@@ -271,139 +292,7 @@
     </div>
   </section>
 
+  <!-- 상담 신청 -->
   <section class="section" id="consult">
     <div class="container" style="text-align:center">
-      <div style="max-width:980px;margin:0 auto 16px;background:linear-gradient(135deg,#22c55e,#06b6d4,#6366f1);color:#fff;padding:12px 16px;border-radius:12px;font-weight:900">
-        결론. 유동화자금이 더 유리합니다!<br/><span style="font-weight:600">신용 부담 없이, 부채 증가 없이, 빠른 자금 확보가 가능합니다</span>
-      </div>
-      <h2 style="font-size:var(--fs-h2);color:#111827">현금자금 확보가 어려우시나요?<br/><span style="background:linear-gradient(135deg,#facc15,#f97316);-webkit-background-clip:text;background-clip:text;color:transparent">포기하지마세요</span></h2>
-
-      <div class="form-wrap">
-        <div class="form-title">무료로 상담 신청하기</div>
-        <form id="leadForm" autocomplete="off" novalidate>
-          <input type="text" name="website" style="display:none" />
-          <div class="form-grid">
-            <input class="input" name="name" placeholder="이름 (2자 이상)" aria-label="이름" minlength="2" required />
-            <div style="display:flex;gap:8px">
-              <select class="input" name="tel1" style="width:90px" autocomplete="tel" aria-label="앞번호">
-                <option>010</option><option>011</option><option>016</option><option>017</option>
-              </select>
-              <input class="input" name="tel2" placeholder="앞자리 3~4자리" maxlength="4"
-                     pattern="[0-9]{3,4}" inputmode="numeric" autocomplete="tel-local-prefix" style="flex:1" required />
-              <input class="input" name="tel3" placeholder="뒷자리 4자리" maxlength="4"
-                     pattern="[0-9]{4}" inputmode="numeric" autocomplete="tel-local-suffix" style="flex:1" required />
-            </div>
-
-            <select class="input" name="industry" required>
-              <option value="" disabled selected>업종 선택</option>
-              <option>병원 및 약국</option><option>숙박업</option><option>마트운영</option>
-              <option>PC방</option><option>BAR</option><option>음식점</option>
-              <option>골프연습장(스크린 포함)</option><option>노래방</option>
-              <option>카센터(타이어전문점 포함)</option><option>기타</option>
-            </select>
-
-            <textarea class="input" name="memo" placeholder="메모 (선택)" style="grid-column:1/-1"></textarea>
-
-            <div class="radio-row">
-              <label class="radio"><input type="radio" name="period" value="3개월 미만" checked /> 3개월 미만</label>
-              <label class="radio"><input type="radio" name="period" value="3개월 이상" /> 3개월 이상</label>
-            </div>
-
-            <div class="radio-row">
-              <label class="radio"><input type="radio" name="avg" value="월 1000만원 미만" /> 월 1000만원 미만</label>
-              <label class="radio"><input type="radio" name="avg" value="월 1000만원 이상" /> 월 1000만원 이상</label>
-            </div>
-          </div>
-
-          <label class="agree"><input type="checkbox" id="agree" required /> 개인정보취급방침에 동의합니다.</label>
-          <button class="submit" id="submitBtn" type="submit">무료상담신청하기 →</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="brand-icon" aria-hidden="true"></div>
-      <div>
-        <b>카드유동화 전문상담</b> &nbsp; <span class="phone">010-7136-3205</span><br/>
-        <small>신용카드 매출이 발생하는 사업자를 위한 전문 유동화 자금 상담 서비스입니다.</small>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    const toast = (msg, ok=true) => {
-      const t = document.getElementById('toast');
-      t.className = 'toast ' + (ok ? 'ok' : 'err');
-      t.textContent = msg; t.style.display = 'block';
-      setTimeout(() => t.style.display = 'none', 3200);
-    };
-
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw3Bkls-YFH_r5Gio9_EUbshSXPP2_YnwVGp7Ejd3yR2SNuHeHBEzXhFb7ZhTF92tLZ/exec";
-
-    const form = document.getElementById('leadForm');
-    const btn  = document.getElementById('submitBtn');
-
-    const onlyDigits = (el, max) => {
-      el.addEventListener('input', () => {
-        el.value = el.value.replace(/[^0-9]/g, '');
-        if (max && el.value.length >= max) el.blur();
-      });
-    };
-    const tel2 = form.querySelector('input[name="tel2"]');
-    const tel3 = form.querySelector('input[name="tel3"]');
-    onlyDigits(tel2, 4); onlyDigits(tel3, 4);
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      if (form.website && form.website.value) return;
-
-      const name = form.name.value.trim();
-      const tel1 = form.tel1.value;
-      const t2 = tel2.value.trim();
-      const t3 = tel3.value.trim();
-      const industry = form.industry.value;
-      const memo = (form.memo && form.memo.value) ? form.memo.value : '';
-
-      if (name.length < 2){ toast('이름을 2자 이상 입력해주세요.', false); return; }
-      if (!/^[0-9]{3,4}$/.test(t2) || !/^[0-9]{4}$/.test(t3)){ toast('전화번호를 정확히 입력해주세요.', false); return; }
-      if (!industry){ toast('업종을 선택해주세요.', false); return; }
-      if (!document.getElementById('agree').checked){ toast('개인정보취급방침 동의가 필요합니다.', false); return; }
-
-      const payload = new URLSearchParams();
-      payload.append('name', name);
-      payload.append('tel1', tel1);
-      payload.append('tel2', t2);
-      payload.append('tel3', t3);
-      payload.append('phone', `${tel1}-${t2}-${t3}`);
-      payload.append('industry', industry);
-      payload.append('memo', memo);
-      payload.append('ua', navigator.userAgent);
-      payload.append('ts', new Date().toISOString());
-      payload.append('recipient', 'yumicheon995@gmail.com');
-
-      btn.disabled = true;
-      const old = btn.textContent;
-      btn.textContent = '전송 중…';
-
-      try {
-        const resp = await fetch(SCRIPT_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
-          body: payload
-        });
-        if (!resp.ok) throw new Error('HTTP ' + resp.status);
-        toast('접수되었습니다. 곧 연락드릴게요!');
-        form.reset();
-      } catch (err) {
-        console.error(err);
-        toast('전송 실패: 앱스 스크립트 배포/권한을 확인해주세요.', false);
-      } finally {
-        btn.disabled = false;
-        btn.textContent = old;
-      }
-    });
-  </script>
-</body>
-</html>
+      <div style="max-width:840px;margin:0 auto 12px;background:linear-gradient(135deg,#22c55e,#06b6d4,#6366f1);color:#fff;padding:12px 16px;bor
