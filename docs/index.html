@@ -2,7 +2,6 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <!-- 모바일에서도 PC 비율 유지 + 핀치줌 허용 -->
   <meta name="viewport" content="width=1280, initial-scale=1, maximum-scale=6, minimum-scale=0.2, user-scalable=yes" />
 
   <!-- Open Graph / Twitter -->
@@ -12,14 +11,14 @@
   <meta property="og:url" content="https://yumicheon995-dot.github.io/bokwoodata/" />
   <meta property="og:title" content="신용카드 매출만 확인되면 최대 5억원까지 지원" />
   <meta property="og:description" content="담보 없이 빠른 자금 확보 · 신용점수 영향 없음 · 24시간 접수" />
-  <meta property="og:image" content="https://yumicheon995-dot.github.io/bokwoodata/images/card-sale-funding-support.jpg?v=5" />
+  <meta property="og:image" content="https://yumicheon995-dot.github.io/bokwoodata/images/card-sale-funding-support.jpg?v=6" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="신용카드 매출만 확인되면 최대 5억원까지 지원" />
   <meta name="twitter:description" content="담보 없이 빠른 자금 확보 · 신용점수 영향 없음 · 24시간 접수" />
-  <meta name="twitter:image" content="https://yumicheon995-dot.github.io/bokwoodata/images/card-sale-funding-support.jpg?v=5" />
+  <meta name="twitter:image" content="https://yumicheon995-dot.github.io/bokwoodata/images/card-sale-funding-support.jpg?v=6" />
 
   <title>카드유동화 랜딩페이지</title>
 
@@ -68,7 +67,7 @@
     .btn-secondary{background:var(--cta-navy)}
     .sub{font-size:13px;font-weight:700;margin-top:6px;opacity:.95}
     .section{padding:60px 20px}
-    .section h2{font-size:28px;margin:0 0 12px;text-align:center}
+    .section h2{font-size:28px;margin:0 0 8px;text-align:center}
     .muted{text-align:center;color:#64748b;margin-bottom:26px}
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1100px;margin:0 auto}
     .card{background:#fff;border-radius:20px;padding:24px;border:1px solid #e5e7eb;box-shadow:0 6px 22px rgba(0,0,0,.06)}
@@ -94,7 +93,7 @@
     .strip .card{background:#ffffff;border:1px solid #e5e7eb;color:#111827}
     .grid6.process .benefit{align-items:flex-start}
     .step{display:inline-block;background:#e0e7ff;color:#1e40af;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800;margin-bottom:10px}
-    #process .benefit .icon{display:none} /* 진행과정 아이콘 박스 숨김 */
+    #process .benefit .icon{display:none}
 
     .form-wrap{max-width:980px;margin:0 auto;background:#fff;border-radius:22px;padding:24px;border:1px solid #e5e7eb;box-shadow:0 10px 28px rgba(0,0,0,.08)}
     .form-title{text-align:center;font-size:24px;font-weight:900;margin:10px 0 16px}
@@ -166,7 +165,7 @@
 
   <section class="section" id="service">
     <div class="container">
-      <h2>유동화 자금이란?</h2>
+      <h2>내 사업에 맞는 유동화자금은 어떤게 있을까?</h2>
       <p class="muted">매출 채권을 기반으로 사업운영자금을 지원</p>
 
       <div class="cards">
@@ -175,7 +174,7 @@
             <svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8Z"/><path d="M4 20a8 8 0 0 1 16 0"/></svg>
           </div>
           <h3>임 대표님</h3>
-          <p>운전자금도 필요하고 사업을<br/>크게 확장하고 싶은데,<br/>내 사업에 맞는 유동화자금을 어떻게<br/>잇을까?<br/>전문가의 도움이 필요해!</p>
+          <p>운전자금도 필요하고 사업을<br/>크게 확장하고 싶은데,<br/>내 사업에 맞는 유동화자금은 어떤게 있을까?<br/>전문가의 도움이 필요해!</p>
         </div>
 
         <div class="card">
@@ -204,11 +203,15 @@
 
   <section class="section" id="benefit">
     <div class="container">
-      <h2>유동화자금 혜택</h2>
+      <h2>유동화 자금 가능 업종</h2>
+      <p class="muted">(카드매출이 있는 사업자 전부가능)</p>
       <div class="grid6">
         <!-- 1) 병원 및 약국 -->
         <div class="benefit">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l1-4h10l1 4"/><path d="M5 9h14l-1 11H6L5 9z"/><path d="M9 9V7a3 3 0 0 1 6 0v2"/></svg></div>
+          <div class="icon" aria-hidden="true">
+            <!-- cross/health icon -->
+            <svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18" /></svg>
+          </div>
           <h4>병원 및 약국</h4>
           <div class="desc">#대표 신용 700점대 보유</div>
           <div class="label">유동화자금 5천만원 확보</div>
@@ -216,7 +219,9 @@
         </div>
         <!-- 2) 숙박업 -->
         <div class="benefit">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 7h10a4 4 0 0 1 4 4v9"/><path d="M3 7v13"/><path d="M3 14h18"/></svg></div>
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 7h10a4 4 0 0 1 4 4v9"/><path d="M3 7v13"/><path d="M3 14h18"/></svg>
+          </div>
           <h4>숙박업</h4>
           <div class="desc">#대표 신용 600점대 보유</div>
           <div class="label">유동화자금 2억 확보</div>
@@ -224,7 +229,9 @@
         </div>
         <!-- 3) 마트운영 -->
         <div class="benefit">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 5h2l2 10h11l2-6H6"/><circle cx="9" cy="19" r="1.8"/><circle cx="18" cy="19" r="1.8"/></svg></div>
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 5h2l2 10h11l2-6H6"/><circle cx="9" cy="19" r="1.8"/><circle cx="18" cy="19" r="1.8"/></svg>
+          </div>
           <h4>마트운영</h4>
           <div class="desc">#대표 신용 600점대 보유</div>
           <div class="label">유동화자금 1.5억 확보</div>
@@ -232,7 +239,9 @@
         </div>
         <!-- 4) PC방 -->
         <div class="benefit">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16v10H4z"/><path d="M8 20h8"/></svg></div>
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 6h16v10H4z"/><path d="M8 20h8"/></svg>
+          </div>
           <h4>PC방</h4>
           <div class="desc">#대표 신용 600점대 보유</div>
           <div class="label">유동화자금 8천만원 확보</div>
@@ -240,7 +249,9 @@
         </div>
         <!-- 5) BAR -->
         <div class="benefit">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 3h18l-6 7v8"/><path d="M9 18h6"/></svg></div>
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 3h18l-6 7v8"/><path d="M9 18h6"/></svg>
+          </div>
           <h4>BAR</h4>
           <div class="desc">#대표 신용 600점대 보유</div>
           <div class="label">유동화자금 9천만원 확보</div>
@@ -248,19 +259,45 @@
         </div>
         <!-- 6) 음식점 -->
         <div class="benefit">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3v7"/><path d="M4 3v7"/><path d="M8 3v7"/><path d="M4 10h4v11"/><path d="M14 3v8"/><path d="M18 3v8"/><path d="M16 11v10"/></svg></div>
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 3v7"/><path d="M4 3v7"/><path d="M8 3v7"/><path d="M4 10h4v11"/><path d="M14 3v8"/><path d="M18 3v8"/><path d="M16 11v10"/></svg>
+          </div>
           <h4>음식점</h4>
           <div class="desc">#대표 신용 600점대 보유</div>
           <div class="label">유동화자금 7천만원 확보</div>
           <span class="small">월 카드 매출 1억원<br/>상환기간 100일</span>
         </div>
-        <!-- 7) 골프연습장(스크린) -->
+        <!-- 7) 골프연습장(스크린 포함) -->
         <div class="benefit">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="15" r="3.2"/><path d="M14 5l6 11-5 3"/><path d="M3 21h12"/></svg></div>
-          <h4>골프연습장(스크린)</h4>
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="9" cy="15" r="3.2"/><path d="M14 5l6 11-5 3"/><path d="M3 21h12"/></svg>
+          </div>
+          <h4>골프연습장(스크린 포함)</h4>
           <div class="desc">#대표 신용 700점대 보유</div>
           <div class="label">유동화자금 4.5억원 확보</div>
           <span class="small">월 카드 매출 4.3천만원<br/>상환기간 100일</span>
+        </div>
+        <!-- 8) 노래방 -->
+        <div class="benefit">
+          <div class="icon" aria-hidden="true">
+            <!-- microphone/music icon -->
+            <svg viewBox="0 0 24 24"><path d="M9 3v6a3 3 0 0 0 6 0V3"/><path d="M12 12v7"/><path d="M8 19h8"/></svg>
+          </div>
+          <h4>노래방</h4>
+          <div class="desc">#대표 신용 600점대 보유</div>
+          <div class="label">유동화자금 6천만원 확보</div>
+          <span class="small">월 카드 매출 8천만원<br/>상환기간 100일</span>
+        </div>
+        <!-- 9) 카센터(타이어전문점 포함) -->
+        <div class="benefit">
+          <div class="icon" aria-hidden="true">
+            <!-- car/tire icon -->
+            <svg viewBox="0 0 24 24"><path d="M3 13l2-4h14l2 4v5H3z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+          </div>
+          <h4>카센터(타이어전문점 포함)</h4>
+          <div class="desc">#대표 신용 600점대 보유</div>
+          <div class="label">유동화자금 1억원 확보</div>
+          <span class="small">월 카드 매출 1.5억원<br/>상환기간 100일</span>
         </div>
       </div>
     </div>
@@ -301,7 +338,6 @@
       <div class="form-wrap">
         <div class="form-title">무료로 상담 신청하기</div>
         <form id="leadForm" autocomplete="off" novalidate>
-          <!-- 스팸봇 차단용 허니팟 -->
           <input type="text" name="website" style="display:none" />
           <div class="form-grid">
             <input class="input" name="name" placeholder="이름 (2자 이상)" aria-label="이름" minlength="2" required />
@@ -309,14 +345,16 @@
               <select class="input" name="tel1" style="width:90px">
                 <option>010</option><option>011</option><option>016</option><option>017</option>
               </select>
-              <input class="input" name="tel2" placeholder="앞자리 3~4자리" maxlength="4" pattern="\d{3,4}" style="flex:1" required />
-              <input class="input" name="tel3" placeholder="뒷자리 4자리" maxlength="4" pattern="\d{4}" style="flex:1" required />
+              <input class="input" name="tel2" placeholder="앞자리 3~4자리" maxlength="4" pattern="\\d{3,4}" style="flex:1" required />
+              <input class="input" name="tel3" placeholder="뒷자리 4자리" maxlength="4" pattern="\\d{4}" style="flex:1" required />
             </div>
 
             <select class="input" name="industry" required>
               <option value="" disabled selected>업종 선택</option>
               <option>병원 및 약국</option><option>숙박업</option><option>마트운영</option>
-              <option>PC방</option><option>BAR</option><option>음식점</option><option>골프연습장(스크린)</option><option>기타</option>
+              <option>PC방</option><option>BAR</option><option>음식점</option>
+              <option>골프연습장(스크린 포함)</option><option>노래방</option>
+              <option>카센터(타이어전문점 포함)</option><option>기타</option>
             </select>
 
             <textarea class="input" name="memo" placeholder="메모 (선택)" style="grid-column:1/-1"></textarea>
@@ -357,7 +395,6 @@
       setTimeout(() => t.style.display = 'none', 3200);
     };
 
-    // Google Apps Script (메일 전송)
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw3Bkls-YFH_r5Gio9_EUbshSXPP2_YnwVGp7Ejd3yR2SNuHeHBEzXhFb7ZhTF92tLZ/exec";
 
     const form = document.getElementById('leadForm');
@@ -365,7 +402,7 @@
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      if (form.website && form.website.value) return; // 허니팟(봇 차단)
+      if (form.website && form.website.value) return;
 
       const name = form.name.value.trim();
       const tel1 = form.tel1.value;
@@ -375,7 +412,7 @@
       const memo = (form.memo && form.memo.value) ? form.memo.value : '';
 
       if (name.length < 2){ toast('이름을 2자 이상 입력해주세요.', false); return; }
-      if (!/^\d{3,4}$/.test(tel2) || !/^\d{4}$/.test(tel3)){ toast('전화번호를 정확히 입력해주세요.', false); return; }
+      if (!/^\\d{3,4}$/.test(tel2) || !/^\\d{4}$/.test(tel3)){ toast('전화번호를 정확히 입력해주세요.', false); return; }
       if (!industry){ toast('업종을 선택해주세요.', false); return; }
       if (!document.getElementById('agree').checked){ toast('개인정보취급방침 동의가 필요합니다.', false); return; }
 
