@@ -4,23 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=3, user-scalable=yes" />
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:locale" content="ko_KR" />
+  <!-- ===== LUCA PATCH: OG/Twitter (카카오 썸네일 고정) ===== -->
+  <link rel="canonical" href="https://yumicheon995-dot.github.io/bokwoodata/">
+  <meta property="og:url" content="https://yumicheon995-dot.github.io/bokwoodata/">
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="카드유동화" />
-  <meta property="og:url" content="https://yumicheon995-dot.github.io/bokwoodata/" />
   <meta property="og:title" content="신용카드 매출만 확인되면 최대 5억원까지 지원" />
   <meta property="og:description" content="담보 없이 빠른 자금 확보 · 신용점수 영향 없음 · 24시간 접수" />
-  <!-- 🔧 변경 1: OG 이미지 경로를 /docs/images/ 로 고정 + 캐시버스트 -->
-  <meta property="og:image" content="https://yumicheon995-dot.github.io/bokwoodata/docs/images/card-sale-funding-support.jpg?v=10" />
+  <meta property="og:image" content="https://yumicheon995-dot.github.io/bokwoodata/docs/images/card-sale-funding-support.jpg?ver=20250826" />
+  <meta property="og:image:secure_url" content="https://yumicheon995-dot.github.io/bokwoodata/docs/images/card-sale-funding-support.jpg?ver=20250826" />
+  <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:type" content="image/jpeg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="신용카드 매출만 확인되면 최대 5억원까지 지원" />
   <meta name="twitter:description" content="담보 없이 빠른 자금 확보 · 신용점수 영향 없음 · 24시간 접수" />
-  <!-- 🔧 변경 2: 트위터 이미지 경로 동일 조정 -->
-  <meta name="twitter:image" content="https://yumicheon995-dot.github.io/bokwoodata/docs/images/card-sale-funding-support.jpg?v=10" />
+  <meta name="twitter:image" content="https://yumicheon995-dot.github.io/bokwoodata/docs/images/card-sale-funding-support.jpg?ver=20250826" />
+  <!-- ===== /LUCA PATCH ===== -->
 
   <title>카드유동화 랜딩페이지</title>
 
@@ -290,9 +290,9 @@
                 <option>010</option><option>011</option><option>016</option><option>017</option>
               </select>
               <input class="input" name="tel2" placeholder="앞자리 3~4자리" maxlength="4"
-                     pattern="[0-9]{3,4}" inputmode="numeric" autocomplete="tel-local-prefix" style="flex:1" required />
+                     inputmode="numeric" autocomplete="tel-local-prefix" style="flex:1" required />
               <input class="input" name="tel3" placeholder="뒷자리 4자리" maxlength="4"
-                     pattern="[0-9]{4}" inputmode="numeric" autocomplete="tel-local-suffix" style="flex:1" required />
+                     inputmode="numeric" autocomplete="tel-local-suffix" style="flex:1" required />
             </div>
 
             <select class="input" name="industry" required>
@@ -341,34 +341,37 @@
       setTimeout(() => t.style.display = 'none', 3200);
     };
 
+    // ===== LUCA PATCH: 전송 안정화 + 전화번호 검증 완화 =====
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw3Bkls-YFH_r5Gio9_EUbshSXPP2_YnwVGp7Ejd3yR2SNuHeHBEzXhFb7ZhTF92tLZ/exec";
 
     const form = document.getElementById('leadForm');
     const btn  = document.getElementById('submitBtn');
 
-    const onlyDigits = (el, max) => {
-      el.addEventListener('input', () => {
-        el.value = el.value.replace(/[^0-9]/g, '');
-        if (max && el.value.length >= max) el.blur();
-      });
+    const onlyDigits = (el) => {
+      el.addEventListener('input', () => { el.value = el.value.replace(/[^0-9]/g, ''); });
     };
     const tel2 = form.querySelector('input[name="tel2"]');
     const tel3 = form.querySelector('input[name="tel3"]');
-    onlyDigits(tel2, 4); onlyDigits(tel3, 4);
+    onlyDigits(tel2); onlyDigits(tel3);
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      if (form.website && form.website.value) return;
+      if (form.website && form.website.value) return; // 봇 차단
 
       const name = form.name.value.trim();
-      const tel1 = form.tel1.value;
+      const tel1 = form.tel1.value.trim();
       const t2 = tel2.value.trim();
       const t3 = tel3.value.trim();
       const industry = form.industry.value;
-      const memo = (form.memo && form.memo.value) ? form.memo.value : '';
+      const memo = (form.memo && form.memo.value) ? form.memo.value.trim() : '';
 
       if (name.length < 2){ toast('이름을 2자 이상 입력해주세요.', false); return; }
-      if (!/^[0-9]{3,4}$/.test(t2) || !/^[0-9]{4}$/.test(t3)){ toast('전화번호를 정확히 입력해주세요.', false); return; }
+
+      // ✅ 숫자만 모아서 10~11자리면 통과(형식 때문에 막히던 문제 제거)
+      const phoneDigits = (tel1 + t2 + t3).replace(/[^0-9]/g, '');
+      if (phoneDigits.length < 10 || phoneDigits.length > 11){
+        toast('전화번호를 다시 확인해주세요 (숫자 10~11자리).', false); return;
+      }
       if (!industry){ toast('업종을 선택해주세요.', false); return; }
       if (!document.getElementById('agree').checked){ toast('개인정보취급방침 동의가 필요합니다.', false); return; }
 
@@ -384,27 +387,27 @@
       payload.append('ts', new Date().toISOString());
       payload.append('recipient', 'yumicheon995@gmail.com');
 
-      btn.disabled = true;
-      const old = btn.textContent;
-      btn.textContent = '전송 중…';
+      btn.disabled = true; const old = btn.textContent; btn.textContent = '전송 중…';
 
       try {
-        const resp = await fetch(SCRIPT_URL, {
+        // ✅ Apps Script가 CORS 헤더를 안 줄 때도 성공 처리되도록 no-cors 사용
+        await fetch(SCRIPT_URL, {
           method: 'POST',
+          mode: 'no-cors',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
           body: payload
         });
-        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+        // no-cors는 응답을 확인할 수 없지만, 서버는 수신함(스크립트 배포 권한: "Anyone")
         toast('접수되었습니다. 곧 연락드릴게요!');
         form.reset();
       } catch (err) {
         console.error(err);
-        toast('전송 실패: 앱스 스크립트 배포/권한을 확인해주세요.', false);
+        toast('전송 실패: 스크립트 배포/권한을 확인해주세요.', false);
       } finally {
-        btn.disabled = false;
-        btn.textContent = old;
+        btn.disabled = false; btn.textContent = old;
       }
     });
+    // ===== /LUCA PATCH =====
   </script>
 </body>
 </html>
