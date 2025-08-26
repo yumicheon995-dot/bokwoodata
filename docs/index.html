@@ -2,22 +2,24 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
+  <!-- 모바일 최적화: 기기폭 기반 + 확대 허용 -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=3, user-scalable=yes" />
 
+  <!-- Open Graph / Twitter -->
   <meta property="og:locale" content="ko_KR" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="카드유동화" />
   <meta property="og:url" content="https://yumicheon995-dot.github.io/bokwoodata/" />
   <meta property="og:title" content="신용카드 매출만 확인되면 최대 5억원까지 지원" />
   <meta property="og:description" content="담보 없이 빠른 자금 확보 · 신용점수 영향 없음 · 24시간 접수" />
-  <meta property="og:image" content="https://yumicheon995-dot.github.io/bokwoodata/images/card-sale-funding-support.jpg?v=9" />
+  <meta property="og:image" content="https://yumicheon995-dot.github.io/bokwoodata/images/card-sale-funding-support.jpg?v=7" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="신용카드 매출만 확인되면 최대 5억원까지 지원" />
   <meta name="twitter:description" content="담보 없이 빠른 자금 확보 · 신용점수 영향 없음 · 24시간 접수" />
-  <meta name="twitter:image" content="https://yumicheon995-dot.github.io/bokwoodata/images/card-sale-funding-support.jpg?v=9" />
+  <meta name="twitter:image" content="https://yumicheon995-dot.github.io/bokwoodata/images/card-sale-funding-support.jpg?v=7" />
 
   <title>카드유동화 랜딩페이지</title>
 
@@ -31,6 +33,7 @@
                  linear-gradient(135deg,#ffffff 30%,#f7f8ff 60%,#f3f5ff 100%);
       --shadow:0 10px 24px rgba(2,6,23,.08);
       --panel-grad:linear-gradient(135deg,#eef2ff,#f8fafc);
+      /* ✅ 가변 폰트 크기(모바일 가독성 강화) */
       --fs-body: clamp(15px, 1.8vw, 16.5px);
       --fs-h1: clamp(26px, 6.2vw, 42px);
       --fs-h2: clamp(20px, 4.4vw, 28px);
@@ -40,27 +43,26 @@
     html,body{height:100%}
     body{
       margin:0;
-      word-break:keep-all;          /* ✅ 한글 임의 줄바꿈 방지 */
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",Arial,sans-serif;
       color:#0f172a; line-height:1.6; background:var(--bg-grad);
-      font-size:var(--fs-body);
+      font-size:var(--fs-body); /* ✅ 본문 가변 크기 */
     }
     a{text-decoration:none;color:inherit}
     .container{max-width:1100px;margin:0 auto;padding:24px 16px}
-    .header{display:flex;align-items:center;justify-content:space-between;gap:10px}
-    .brand{display:flex;gap:10px;align-items:center;min-width:0}
-    .brand-icon{width:28px;height:28px;border-radius:8px;background:var(--brand-grad);position:relative;box-shadow:0 6px 16px rgba(137,80,255,.35);flex:0 0 28px}
+    .header{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand-icon{width:28px;height:28px;border-radius:8px;background:var(--brand-grad);position:relative;box-shadow:0 6px 16px rgba(137,80,255,.35)}
     .brand-icon::after{content:"";position:absolute;inset:7px 5px;border-radius:5px;background:#fff;opacity:.9}
-    .brand-name{font-weight:800;color:#111827;white-space:nowrap;font-size:clamp(14px,3.4vw,18px)}  /* ✅ 한줄 고정 */
-    .nav{display:flex;gap:14px;align-items:center;flex-wrap:nowrap;overflow-x:auto}
-    .nav a{color:#1f2937;font-weight:700;white-space:nowrap;display:inline-block;line-height:1; font-size:clamp(13px,2.9vw,15px)} /* ✅ 링크 한줄 */
-    .cta{padding:8px 12px;border-radius:10px;background:var(--brand-grad);color:#fff;font-weight:800;flex:0 0 auto}
+    .brand-name{font-weight:800;color:#111827}
+    .nav{display:flex;gap:20px;align-items:center}
+    .nav a{color:#1f2937;font-weight:600}
+    .cta{padding:8px 14px;border-radius:10px;background:var(--brand-grad);color:#fff;font-weight:800}
     .hero{padding:24px 16px 56px}
     .hero-body{max-width:760px;margin:0 auto;text-align:center}
     .headline{margin:14px 0 12px;line-height:1.25;letter-spacing:-.4px}
-    .headline .l1{display:block;font-size:var(--fs-h1);font-weight:900;color:#111827;white-space:nowrap} /* ✅ 한줄 */
+    .headline .l1{display:block;font-size:var(--fs-h1);font-weight:900;color:#111827}
     .headline .l1 .blue{color:var(--primary)}
-    .headline .l2{display:block;margin-top:4px;font-size:var(--fs-h1);font-weight:900;color:#111827;white-space:nowrap} /* ✅ 한줄 */
+    .headline .l2{display:block;margin-top:4px;font-size:var(--fs-h1);font-weight:900;color:#111827}
     @keyframes blink{0%,100%{opacity:1}50%{opacity:.55}}
     .max-orange{color:#ff6b00;animation:blink 1.1s infinite}
     .subq{margin:14px 0 16px;color:#374151;font-size:clamp(15px,3.9vw,18px);font-weight:700}
@@ -72,8 +74,8 @@
     .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
     .btn{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;padding:16px 22px;border-radius:14px;font-weight:900;color:#fff;box-shadow:var(--shadow);text-align:center;min-width:min(100%, 340px)}
     .btn.blink{animation:blink 1.2s infinite}
-    .btn-primary{background:#ff6b00}
-    .btn-secondary{background:#0b1220}
+    .btn-primary{background:var(--cta-orange)}
+    .btn-secondary{background:var(--cta-navy)}
     .sub{font-size:12.5px;font-weight:700;margin-top:6px;opacity:.95}
     .section{padding:44px 16px}
     .section h2{font-size:var(--fs-h2);margin:0 0 8px;text-align:center}
@@ -121,19 +123,14 @@
     .btn-primary.blink{animation:blink 1.2s infinite}
     .headline .max-orange{animation:blink 1.1s infinite}
 
-    /* ---------- Responsive: mobile keeps two columns ---------- */
+    /* ✅ 반응형 그리드 튜닝 */
     @media (max-width:1024px){
       .cards,.grid6{grid-template-columns:1fr 1fr}
     }
-    /* 유지: 640px 이하에서도 2열 유지 */
     @media (max-width:640px){
-      .cards,.grid6{grid-template-columns:1fr 1fr}
-      .nav{gap:10px}
-      .cta{padding:6px 10px}
-    }
-    /* 아주 작은 폭에서만 1열 */
-    @media (max-width:360px){
       .cards,.grid6{grid-template-columns:1fr}
+      .form-grid{grid-template-columns:1fr}
+      .btn{width:100%}
     }
     @media (max-width:420px){
       .subq{font-size:16px}
@@ -233,15 +230,15 @@
       <h2>유동화 자금 가능 업종</h2>
       <p class="muted">(카드매출이 있는 사업자 전부가능)</p>
       <div class="grid6">
-        <div class="benefit"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg></div><h4>병원 및 약국</h4><div class="label">유동화자금 5천만원 확보</div><span class="small">월 카드 매출 6천만원<br/>상환기간 100일</span></div>
-        <div class="benefit"><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 7h10a4 4 0 0 1 4 4v9"/><path d="M3 7v13"/><path d="M3 14h18"/></svg></div><h4>숙박업</h4><div class="label">유동화자금 2억 확보</div><span class="small">월 카드 매출 3억원<br/>상환기간 100일</span></div>
-        <div class="benefit"><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 5h2l2 10h11l2-6H6"/><circle cx="9" cy="19" r="1.8"/><circle cx="18" cy="19" r="1.8"/></svg></div><h4>마트운영</h4><div class="label">유동화자금 1.5억 확보</div><span class="small">월 카드 매출 2.7억원<br/>상환기간 100일</span></div>
-        <div class="benefit"><div class="icon"><svg viewBox="0 0 24 24"><path d="M4 6h16v10H4z"/><path d="M8 20h8"/></svg></div><h4>PC방</h4><div class="label">유동화자금 8천만원 확보</div><span class="small">월 카드 매출 9천만원<br/>상환기간 100일</span></div>
-        <div class="benefit"><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 3h18l-6 7v8"/><path d="M9 18h6"/></svg></div><h4>BAR</h4><div class="label">유동화자금 9천만원 확보</div><span class="small">월 카드 매출 1.1억원<br/>상환기간 100일</span></div>
-        <div class="benefit"><div class="icon"><svg viewBox="0 0 24 24"><path d="M6 3v7"/><path d="M4 3v7"/><path d="M8 3v7"/><path d="M4 10h4v11"/><path d="M14 3v8"/><path d="M18 3v8"/><path d="M16 11v10"/></svg></div><h4>음식점</h4><div class="label">유동화자금 7천만원 확보</div><span class="small">월 카드 매출 1억원<br/>상환기간 100일</span></div>
-        <div class="benefit"><div class="icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="15" r="3.2"/><path d="M14 5l6 11-5 3"/><path d="M3 21h12"/></svg></div><h4>골프연습장(스크린 포함)</h4><div class="label">유동화자금 4.5억원 확보</div><span class="small">월 카드 매출 4.3천만원<br/>상환기간 100일</span></div>
-        <div class="benefit"><div class="icon"><svg viewBox="0 0 24 24"><path d="M9 3v6a3 3 0 0 0 6 0V3"/><path d="M12 12v7"/><path d="M8 19h8"/></svg></div><h4>노래방</h4><div class="label">유동화자금 6천만원 확보</div><span class="small">월 카드 매출 8천만원<br/>상환기간 100일</span></div>
-        <div class="benefit"><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 13l2-4h14l2 4v5H3z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></div><h4>카센터(타이어전문점 포함)</h4><div class="label">유동화자금 1억원 확보</div><span class="small">월 카드 매출 1.5억원<br/>상환기간 100일</span></div>
+        <div class="benefit"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg></div><h4>병원 및 약국</h4><div class="desc">#대표 신용 700점대 보유</div><div class="label">유동화자금 5천만원 확보</div><span class="small">월 카드 매출 6천만원<br/>상환기간 100일</span></div>
+        <div class="benefit"><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 7h10a4 4 0 0 1 4 4v9"/><path d="M3 7v13"/><path d="M3 14h18"/></svg></div><h4>숙박업</h4><div class="desc">#대표 신용 600점대 보유</div><div class="label">유동화자금 2억 확보</div><span class="small">월 카드 매출 3억원<br/>상환기간 100일</span></div>
+        <div class="benefit"><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 5h2l2 10h11l2-6H6"/><circle cx="9" cy="19" r="1.8"/><circle cx="18" cy="19" r="1.8"/></svg></div><h4>마트운영</h4><div class="desc">#대표 신용 600점대 보유</div><div class="label">유동화자금 1.5억 확보</div><span class="small">월 카드 매출 2.7억원<br/>상환기간 100일</span></div>
+        <div class="benefit"><div class="icon"><svg viewBox="0 0 24 24"><path d="M4 6h16v10H4z"/><path d="M8 20h8"/></svg></div><h4>PC방</h4><div class="desc">#대표 신용 600점대 보유</div><div class="label">유동화자금 8천만원 확보</div><span class="small">월 카드 매출 9천만원<br/>상환기간 100일</span></div>
+        <div class="benefit"><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 3h18l-6 7v8"/><path d="M9 18h6"/></svg></div><h4>BAR</h4><div class="desc">#대표 신용 600점대 보유</div><div class="label">유동화자금 9천만원 확보</div><span class="small">월 카드 매출 1.1억원<br/>상환기간 100일</span></div>
+        <div class="benefit"><div class="icon"><svg viewBox="0 0 24 24"><path d="M6 3v7"/><path d="M4 3v7"/><path d="M8 3v7"/><path d="M4 10h4v11"/><path d="M14 3v8"/><path d="M18 3v8"/><path d="M16 11v10"/></svg></div><h4>음식점</h4><div class="desc">#대표 신용 600점대 보유</div><div class="label">유동화자금 7천만원 확보</div><span class="small">월 카드 매출 1억원<br/>상환기간 100일</span></div>
+        <div class="benefit"><div class="icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="15" r="3.2"/><path d="M14 5l6 11-5 3"/><path d="M3 21h12"/></svg></div><h4>골프연습장(스크린 포함)</h4><div class="desc">#대표 신용 700점대 보유</div><div class="label">유동화자금 4.5억원 확보</div><span class="small">월 카드 매출 4.3천만원<br/>상환기간 100일</span></div>
+        <div class="benefit"><div class="icon"><svg viewBox="0 0 24 24"><path d="M9 3v6a3 3 0 0 0 6 0V3"/><path d="M12 12v7"/><path d="M8 19h8"/></svg></div><h4>노래방</h4><div class="desc">#대표 신용 600점대 보유</div><div class="label">유동화자금 6천만원 확보</div><span class="small">월 카드 매출 8천만원<br/>상환기간 100일</span></div>
+        <div class="benefit"><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 13l2-4h14l2 4v5H3z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></div><h4>카센터(타이어전문점 포함)</h4><div class="desc">#대표 신용 600점대 보유</div><div class="label">유동화자금 1억원 확보</div><span class="small">월 카드 매출 1.5억원<br/>상환기간 100일</span></div>
       </div>
     </div>
   </section>
@@ -285,13 +282,11 @@
           <div class="form-grid">
             <input class="input" name="name" placeholder="이름 (2자 이상)" aria-label="이름" minlength="2" required />
             <div style="display:flex;gap:8px">
-              <select class="input" name="tel1" style="width:90px" autocomplete="tel" aria-label="앞번호">
+              <select class="input" name="tel1" style="width:90px">
                 <option>010</option><option>011</option><option>016</option><option>017</option>
               </select>
-              <input class="input" name="tel2" placeholder="앞자리 3~4자리" maxlength="4"
-                     pattern="[0-9]{3,4}" inputmode="numeric" autocomplete="tel-local-prefix" style="flex:1" required />
-              <input class="input" name="tel3" placeholder="뒷자리 4자리" maxlength="4"
-                     pattern="[0-9]{4}" inputmode="numeric" autocomplete="tel-local-suffix" style="flex:1" required />
+              <input class="input" name="tel2" placeholder="앞자리 3~4자리" maxlength="4" pattern="\\d{3,4}" style="flex:1" required />
+              <input class="input" name="tel3" placeholder="뒷자리 4자리" maxlength="4" pattern="\\d{4}" style="flex:1" required />
             </div>
 
             <select class="input" name="industry" required>
@@ -345,38 +340,28 @@
     const form = document.getElementById('leadForm');
     const btn  = document.getElementById('submitBtn');
 
-    const onlyDigits = (el, max) => {
-      el.addEventListener('input', () => {
-        el.value = el.value.replace(/[^0-9]/g, '');
-        if (max && el.value.length >= max) el.blur();
-      });
-    };
-    const tel2 = form.querySelector('input[name="tel2"]');
-    const tel3 = form.querySelector('input[name="tel3"]');
-    onlyDigits(tel2, 4); onlyDigits(tel3, 4);
-
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (form.website && form.website.value) return;
 
       const name = form.name.value.trim();
       const tel1 = form.tel1.value;
-      const t2 = tel2.value.trim();
-      const t3 = tel3.value.trim();
+      const tel2 = form.tel2.value.trim();
+      const tel3 = form.tel3.value.trim();
       const industry = form.industry.value;
       const memo = (form.memo && form.memo.value) ? form.memo.value : '';
 
       if (name.length < 2){ toast('이름을 2자 이상 입력해주세요.', false); return; }
-      if (!/^[0-9]{3,4}$/.test(t2) || !/^[0-9]{4}$/.test(t3)){ toast('전화번호를 정확히 입력해주세요.', false); return; }
+      if (!/^\\d{3,4}$/.test(tel2) || !/^\\d{4}$/.test(tel3)){ toast('전화번호를 정확히 입력해주세요.', false); return; }
       if (!industry){ toast('업종을 선택해주세요.', false); return; }
       if (!document.getElementById('agree').checked){ toast('개인정보취급방침 동의가 필요합니다.', false); return; }
 
       const payload = new URLSearchParams();
       payload.append('name', name);
       payload.append('tel1', tel1);
-      payload.append('tel2', t2);
-      payload.append('tel3', t3);
-      payload.append('phone', `${tel1}-${t2}-${t3}`);
+      payload.append('tel2', tel2);
+      payload.append('tel3', tel3);
+      payload.append('phone', `${tel1}-${tel2}-${tel3}`);
       payload.append('industry', industry);
       payload.append('memo', memo);
       payload.append('ua', navigator.userAgent);
