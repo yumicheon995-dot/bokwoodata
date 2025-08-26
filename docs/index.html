@@ -137,31 +137,19 @@
     .btn-primary.blink{animation:blink 1.2s infinite}
     .headline .max-orange{animation:blink 1.1s infinite}
 
-    /* ---------- Responsive ---------- */
-    /* 업종 카드/혜택: 모바일 1열 */
+    /* 모바일 1열 카드 */
     @media (max-width:1024px){ .cards,.grid6{grid-template-columns:1fr 1fr} }
-    @media (max-width:640px){
-      .cards,.grid6{grid-template-columns:1fr}
-      .nav{gap:10px}
-      .cta{padding:6px 10px}
-    }
-    @media (max-width:420px){
-      .subq{font-size:16px}
-      .feature{font-size:14.5px}
-      .agree{font-size:13.5px}
-      .submit{font-size:16px}
-    }
+    @media (max-width:640px){ .cards,.grid6{grid-template-columns:1fr} .nav{gap:10px} .cta{padding:6px 10px} }
+    @media (max-width:420px){ .subq{font-size:16px} .feature{font-size:14.5px} .agree{font-size:13.5px} .submit{font-size:16px} }
 
-    /* ✅ 전화번호 입력 행: PC 비율처럼 고정 그리드 */
-    .phone-row{display:grid;grid-template-columns:110px 1fr 1fr;gap:8px;align-items:stretch}
-    @media (max-width:420px){ .phone-row{grid-template-columns:95px 1fr 1fr} }
-    .phone-row .input, .phone-row select{height:var(--input-h)}
+    /* ===== (변경) 전화번호 한 줄 입력을 위한 스타일 ===== */
+    .fullphone{grid-column:1/-1}
   </style>
 </head>
 <body>
   <div class="toast" id="toast"></div>
 
-  <!-- 헤더(유지) -->
+  <!-- 헤더 (유지) -->
   <header class="container header">
     <div class="brand">
       <div class="brand-icon" aria-hidden="true"></div>
@@ -175,7 +163,7 @@
     </nav>
   </header>
 
-  <!-- 히어로(유지) -->
+  <!-- 히어로 (유지) -->
   <section class="hero" id="top">
     <div class="hero-body">
       <h1 class="headline">
@@ -207,7 +195,7 @@
     </div>
   </section>
 
-  <!-- 서비스(유지) -->
+  <!-- 서비스 (유지) -->
   <section class="section" id="service">
     <div class="container">
       <h2>내 사업에 맞는 유동화자금은 어떤게 있을까?</h2>
@@ -246,7 +234,7 @@
     </div>
   </section>
 
-  <!-- 혜택(유지) -->
+  <!-- 혜택 (유지) -->
   <section class="strip section">
     <div class="container">
       <h2>까다롭지않은 자금조달</h2>
@@ -258,7 +246,7 @@
     </div>
   </section>
 
-  <!-- 업종 카드(아이콘 매칭 + 모바일 1열 유지) -->
+  <!-- 업종 카드 (유지) -->
   <section class="section" id="benefit">
     <div class="container">
       <h2>유동화 자금 가능 업종</h2>
@@ -277,7 +265,7 @@
     </div>
   </section>
 
-  <!-- 진행과정(유지) -->
+  <!-- 진행과정 (유지) -->
   <section class="section" id="process">
     <div class="container">
       <h2>카드매출 채권 유동화 진행과정</h2>
@@ -292,7 +280,7 @@
     </div>
   </section>
 
-  <!-- 무료상담(유지 + 전화번호 행 비율 수정) -->
+  <!-- 무료상담 (전화번호 한 칸으로 변경) -->
   <section class="section" id="consult">
     <div class="container" style="text-align:center">
       <div style="max-width:980px;margin:0 auto 16px;background:linear-gradient(135deg,#22c55e,#06b6d4,#6366f1);color:#fff;padding:12px 16px;border-radius:12px;font-weight:900">
@@ -305,16 +293,13 @@
         <form id="leadForm" autocomplete="off" novalidate>
           <input type="text" name="website" style="display:none" />
           <div class="form-grid">
+            <!-- 이름 -->
             <input class="input" name="name" placeholder="이름 (2자 이상)" aria-label="이름" minlength="2" required />
-            <!-- ✅ 전화번호 행: PC와 같은 비율 -->
-            <div class="phone-row">
-              <select class="input" name="tel1" autocomplete="tel" aria-label="앞번호">
-                <option>010</option><option>011</option><option>016</option><option>017</option>
-              </select>
-              <input class="input" name="tel2" placeholder="앞자리 3~4자리" maxlength="4" inputmode="numeric" autocomplete="tel-local-prefix" required />
-              <input class="input" name="tel3" placeholder="뒷자리 4자리" maxlength="4" inputmode="numeric" autocomplete="tel-local-suffix" required />
-            </div>
 
+            <!-- (변경) 전화번호: 한 줄, 그리드 전체 폭 -->
+            <input class="input fullphone" name="phone" placeholder="전화번호 입력 (하이픈 없이 숫자만)" inputmode="numeric" autocomplete="tel" minlength="10" maxlength="13" aria-label="전화번호" required />
+
+            <!-- 업종 -->
             <select class="input" name="industry" required>
               <option value="" disabled selected>업종 선택</option>
               <option>병원 및 약국</option><option>숙박업</option><option>마트운영</option>
@@ -323,13 +308,14 @@
               <option>카센터(타이어전문점 포함)</option><option>기타</option>
             </select>
 
+            <!-- 메모 -->
             <textarea class="input" name="memo" placeholder="메모 (선택)" style="grid-column:1/-1"></textarea>
 
+            <!-- 라디오 -->
             <div class="radio-row">
               <label class="radio"><input type="radio" name="period" value="3개월 미만" checked /> 3개월 미만</label>
               <label class="radio"><input type="radio" name="period" value="3개월 이상" /> 3개월 이상</label>
             </div>
-
             <div class="radio-row">
               <label class="radio"><input type="radio" name="avg" value="월 1000만원 미만" /> 월 1000만원 미만</label>
               <label class="radio"><input type="radio" name="avg" value="월 1000만원 이상" /> 월 1000만원 이상</label>
@@ -361,34 +347,38 @@
       setTimeout(() => t.style.display = 'none', 3200);
     };
 
-    // 전송 안정화 + 전화번호 검증 완화
+    // (유지) 구글 앱스 스크립트 엔드포인트
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw3Bkls-YFH_r5Gio9_EUbshSXPP2_YnwVGp7Ejd3yR2SNuHeHBEzXhFb7ZhTF92tLZ/exec";
 
     const form = document.getElementById('leadForm');
     const btn  = document.getElementById('submitBtn');
 
-    const onlyDigits = (el) => {
-      el.addEventListener('input', () => { el.value = el.value.replace(/[^0-9]/g, ''); });
-    };
-    const tel2 = form.querySelector('input[name="tel2"]');
-    const tel3 = form.querySelector('input[name="tel3"]');
-    onlyDigits(tel2); onlyDigits(tel3);
+    // 숫자만 허용
+    const digitsOnly = (s) => s.replace(/[^0-9]/g, '');
+
+    // 전화번호 보기 좋게 010-1234-5678 형식 자동 하이픈(선택 사항)
+    const phoneInput = document.querySelector('input[name="phone"]');
+    phoneInput.addEventListener('input', () => {
+      let v = digitsOnly(phoneInput.value).slice(0,11); // 최대 11자리
+      // 포맷팅 (010-XXXX-XXXX or 01X-XXX-XXXX)
+      if (v.length > 7)       phoneInput.value = v.replace(/(\d{3})(\d{4})(\d{0,4})/, '$1-$2-$3');
+      else if (v.length > 3)  phoneInput.value = v.replace(/(\d{3})(\d{0,4})/, '$1-$2');
+      else                    phoneInput.value = v;
+    });
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (form.website && form.website.value) return; // 봇 차단
 
       const name = form.name.value.trim();
-      const tel1 = form.tel1.value.trim();
-      const t2 = tel2.value.trim();
-      const t3 = tel3.value.trim();
+      const phoneRaw = form.phone.value.trim();
       const industry = form.industry.value;
       const memo = (form.memo && form.memo.value) ? form.memo.value.trim() : '';
 
       if (name.length < 2){ toast('이름을 2자 이상 입력해주세요.', false); return; }
 
-      // 숫자만 모아서 10~11자리면 통과
-      const phoneDigits = (tel1 + t2 + t3).replace(/[^0-9]/g, '');
+      // 숫자 10~11자리만 허용
+      const phoneDigits = phoneRaw.replace(/[^0-9]/g, '');
       if (phoneDigits.length < 10 || phoneDigits.length > 11){
         toast('전화번호를 다시 확인해주세요 (숫자 10~11자리).', false); return;
       }
@@ -397,10 +387,7 @@
 
       const payload = new URLSearchParams();
       payload.append('name', name);
-      payload.append('tel1', tel1);
-      payload.append('tel2', t2);
-      payload.append('tel3', t3);
-      payload.append('phone', `${tel1}-${t2}-${t3}`);
+      payload.append('phone', phoneDigits);
       payload.append('industry', industry);
       payload.append('memo', memo);
       payload.append('ua', navigator.userAgent);
@@ -412,7 +399,7 @@
       try {
         await fetch(SCRIPT_URL, {
           method: 'POST',
-          mode: 'no-cors', // CORS 헤더 없어도 성공 처리
+          mode: 'no-cors', // CORS 미설정 환경에서도 성공 처리
           headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
           body: payload
         });
