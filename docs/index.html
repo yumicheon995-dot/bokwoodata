@@ -4,23 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=3, user-scalable=yes" />
 
-  <!-- ===== LUCA PATCH: OG/Twitter (카카오 썸네일 고정) ===== -->
+  <!-- ===== OG/Twitter (카카오 썸네일 고정) ===== -->
   <link rel="canonical" href="https://yumicheon995-dot.github.io/bokwoodata/">
   <meta property="og:url" content="https://yumicheon995-dot.github.io/bokwoodata/">
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="카드유동화" />
   <meta property="og:title" content="신용카드 매출만 확인되면 최대 5억원까지 지원" />
   <meta property="og:description" content="담보 없이 빠른 자금 확보 · 신용점수 영향 없음 · 24시간 접수" />
-  <meta property="og:image" content="https://yumicheon995-dot.github.io/bokwoodata/docs/images/card-sale-funding-support.jpg?ver=20250826">
-  <meta property="og:image:secure_url" content="https://yumicheon995-dot.github.io/bokwoodata/docs/images/card-sale-funding-support.jpg?ver=20250826" />
+  <!-- ✅ Pages 공개 경로는 /images 임 (/docs 아님) -->
+  <meta property="og:image" content="https://yumicheon995-dot.github.io/bokwoodata/images/card-sale-funding-support.jpg?ver=20250826" />
+  <meta property="og:image:secure_url" content="https://yumicheon995-dot.github.io/bokwoodata/images/card-sale-funding-support.jpg?ver=20250826" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="신용카드 매출만 확인되면 최대 5억원까지 지원" />
   <meta name="twitter:description" content="담보 없이 빠른 자금 확보 · 신용점수 영향 없음 · 24시간 접수" />
-  <meta name="twitter:image" content="https://yumicheon995-dot.github.io/bokwoodata/docs/images/card-sale-funding-support.jpg?ver=20250826" />
-  <!-- ===== /LUCA PATCH ===== -->
+  <meta name="twitter:image" content="https://yumicheon995-dot.github.io/bokwoodata/images/card-sale-funding-support.jpg?ver=20250826" />
+  <!-- ===== /OG/Twitter ===== -->
 
   <title>카드유동화 랜딩페이지</title>
 
@@ -341,7 +342,7 @@
       setTimeout(() => t.style.display = 'none', 3200);
     };
 
-    // ===== LUCA PATCH: 전송 안정화 + 전화번호 검증 완화 =====
+    // 전송 안정화 + 전화번호 검증 완화
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw3Bkls-YFH_r5Gio9_EUbshSXPP2_YnwVGp7Ejd3yR2SNuHeHBEzXhFb7ZhTF92tLZ/exec";
 
     const form = document.getElementById('leadForm');
@@ -367,7 +368,7 @@
 
       if (name.length < 2){ toast('이름을 2자 이상 입력해주세요.', false); return; }
 
-      // ✅ 숫자만 모아서 10~11자리면 통과(형식 때문에 막히던 문제 제거)
+      // 숫자만 모아서 10~11자리면 통과
       const phoneDigits = (tel1 + t2 + t3).replace(/[^0-9]/g, '');
       if (phoneDigits.length < 10 || phoneDigits.length > 11){
         toast('전화번호를 다시 확인해주세요 (숫자 10~11자리).', false); return;
@@ -390,14 +391,12 @@
       btn.disabled = true; const old = btn.textContent; btn.textContent = '전송 중…';
 
       try {
-        // ✅ Apps Script가 CORS 헤더를 안 줄 때도 성공 처리되도록 no-cors 사용
         await fetch(SCRIPT_URL, {
           method: 'POST',
-          mode: 'no-cors',
+          mode: 'no-cors', // CORS 헤더 없어도 성공 처리
           headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
           body: payload
         });
-        // no-cors는 응답을 확인할 수 없지만, 서버는 수신함(스크립트 배포 권한: "Anyone")
         toast('접수되었습니다. 곧 연락드릴게요!');
         form.reset();
       } catch (err) {
@@ -407,7 +406,6 @@
         btn.disabled = false; btn.textContent = old;
       }
     });
-    // ===== /LUCA PATCH =====
   </script>
 </body>
 </html>
