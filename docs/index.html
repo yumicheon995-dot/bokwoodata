@@ -121,6 +121,25 @@
     .btn-primary.blink{animation:blink 1.2s infinite}
     .headline .max-orange{animation:blink 1.1s infinite}
 
+    
+    /* ===== Mobile Optimizations (유미 요청) ===== */
+    .radio{font-size:15px}
+    .policy-box{font-size:14px}
+    .policy-box div{line-height:1.35}
+    .radio input{transform:scale(1.05)}
+    @media (max-width:520px){
+      .radio-row{gap:10px}
+      .radio{padding:10px 10px;font-size:14px}
+      .policy-box{padding:10px 12px;font-size:13.5px;gap:8px}
+      .policy-box input{flex:0 0 auto}
+      .policy-box div{font-size:13.5px}
+    }
+    @media (max-width:400px){
+      .radio{padding:9px 8px;font-size:13px}
+      .policy-box{padding:9px 10px;font-size:12.5px}
+      .policy-box div{font-size:12.5px}
+    }
+
     /* Responsive */
     @media (max-width:1024px){ .cards,.grid6{grid-template-columns:1fr 1fr} }
     @media (max-width:640px){ .cards,.grid6{grid-template-columns:1fr} .nav{gap:10px}.cta{padding:6px 10px}}
