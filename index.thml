@@ -40,7 +40,7 @@ return ( <main className="bg-white"> {/* Hero Section /} <section className="bg-
         >
           <a href="tel:01071363205" className="rounded-lg bg-rose-600 px-6 py-3 text-white font-bold shadow block">
             즉시 무료상담
-            <div className="text-lg font-semibold">010-7136-3205</div>
+            <div className="text-lg font-semibold">010-8415-3205</div>
           </a>
         </motion.div>
 
@@ -86,7 +86,7 @@ return ( <main className="bg-white"> {/* Hero Section /} <section className="bg-
   <section className="bg-[#F5F7FF] py-6">
     <div className="max-w-3xl mx-auto px-4 text-center">
       <p className="text-blue-700 font-bold text-lg">전문가 무료상담 카드대출 유동화자금</p>
-      <p className="text-2xl font-bold mt-2">010-7136-3205</p>
+      <p className="text-2xl font-bold mt-2">010-8415-3205</p>
     </div>
   </section>
 
